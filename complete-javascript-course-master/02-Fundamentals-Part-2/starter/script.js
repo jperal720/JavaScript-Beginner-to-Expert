@@ -64,19 +64,29 @@ if(hasDriversLicense) console.log(`I can drive`);
 // console.log(`Currently feeling ${emotion}!`);
 
 //Arrow Function
-const calcAge3 = birthYear => 2037 - birthYear;
+// const calcAge3 = birthYear => 2037 - birthYear;
 
-let age = calcAge3(2000);
-console.log(age);
+// let age = calcAge3(2000);
+// console.log(age);
 
-const yearsUntilRetirement = (birthYear, birthName) => {
-    const age = 2037 - birthYear;
-    const retirement = 65 - age; //Retirement age is 65
+// const yearsUntilRetirement = (birthYear, birthName) => {
+//     const age = 2037 - birthYear;
+//     const retirement = 65 - age; //Retirement age is 65
 
-    return `${birthName} retires in ${retirement}`;
+//     return `${birthName} retires in ${retirement}`;
+// }
+
+// console.log(yearsUntilRetirement(2000, 'Nathan'));
+
+const fruitCutter = num => `${num} fruits cut successfully!`;
+
+
+const fruitProcessor = function (apples, oranges) {
+    console.log(fruitCutter(apples + oranges));
+
+    const juice = `Juice with ${apples} apples and ${oranges} oranges`;
+    return juice;
 }
 
-console.log(yearsUntilRetirement(2000, 'Nathan'));
-
-
+console.log(fruitProcessor(4, 5));
 
