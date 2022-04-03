@@ -106,12 +106,19 @@
 
 //Ternary operators
 
-const age = 15;
+// const age = 15;
 
-console.log(`You are ${age}, therefore you ${age >= 19 ? "can" : "cannot"} drink alcohol.`);
+// console.log(`You are ${age}, therefore you ${age >= 19 ? "can" : "cannot"} drink alcohol.`);
 
-const legal = age >= 19 ? true : false;
-console.log(`I'm legal: ${legal}`);
+// const legal = age >= 19 ? true : false;
+// console.log(`I'm legal: ${legal}`);
+
+//Coding Challenge #4 
+
+const bill = 430;
+const tip = bill <= 50 || bill >= 300 ? bill * 0.20 : bill * 0.15;
+
+console.log(`Steven's bill came out (before tip) to ${bill}, after tip (${tip}) the bill came out to a total of ${bill + tip}`);
 
 
 
