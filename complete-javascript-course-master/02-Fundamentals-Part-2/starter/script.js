@@ -1,10 +1,10 @@
 'use strict';
  
-let hasDriversLicense = false;
-const passTest = true;
+// let hasDriversLicense = false;
+// const passTest = true;
 
-if(passTest) hasDriversLicense = true;
-if(hasDriversLicense) console.log(`I can drive`);
+// if(passTest) hasDriversLicense = true;
+// if(hasDriversLicense) console.log(`I can drive`);
 
 //Some variables that strict mode reserves
 // const private = 10;
@@ -78,15 +78,36 @@ if(hasDriversLicense) console.log(`I can drive`);
 
 // console.log(yearsUntilRetirement(2000, 'Nathan'));
 
-const fruitCutter = num => `${num} fruits cut successfully!`;
+// const fruitCutter = num => `${num} fruits cut successfully!`;
 
 
-const fruitProcessor = function (apples, oranges) {
-    console.log(fruitCutter(apples + oranges));
+// const fruitProcessor = function (apples, oranges) {
+//     console.log(fruitCutter(apples + oranges));
 
-    const juice = `Juice with ${apples} apples and ${oranges} oranges`;
-    return juice;
+//     const juice = `Juice with ${apples} apples and ${oranges} oranges`;
+//     return juice;
+// }
+
+// console.log(fruitProcessor(4, 5));
+
+//Coding Challenge #1
+
+const scoresDolphins = [85, 54, 41];
+const scoresKoalas = [23, 34, 27];
+
+const calcAverage = scores => (scores[0] + scores[1] + scores[2]) / 3;
+
+const checkWinner = function( avgDolphins, avgKoalas){
+    if (avgDolphins > avgKoalas && avgDolphins / 2 >= avgKoalas)
+        return `Dolphins Win (${avgDolphins} vs. ${avgKoalas})4!`;
+
+    else if (avgKoalas > avgDolphins && avgKoalas / 2 >= avgDolphins)
+        return `Koalas Win (${avgKoalas} vs. ${avgDolphins})!`;
+
+    return `No Team Wins (${avgDolphins} vs. ${avgKoalas})!`;
 }
 
-console.log(fruitProcessor(4, 5));
+const avgDolphins = calcAverage(scoresDolphins), avgKoalas = calcAverage(scoresKoalas);
+
+console.log(checkWinner(avgDolphins, avgKoalas));
 
