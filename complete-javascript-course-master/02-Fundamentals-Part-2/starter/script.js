@@ -143,35 +143,68 @@
 
 // console.log(`Bills: ${bills}\nTips: ${tips}\nTotal: ${total}`);
 
-const jonas = { //Object literal syntax
-    firstName: "Jonas",
-    lastName: "Schmedtmann",
-    age: 2037 - 1991,
-    job: "Teacher",
-    friends: ['Michael', 'Peter', 'Steven']
-};
+// const jonas = { //Object literal syntax
+//     firstName: "Jonas",
+//     lastName: "Schmedtmann",
+//     age: 2037 - 1991,
+//     job: "Teacher",
+//     friends: ['Michael', 'Peter', 'Steven']
+// };
 
-console.log(jonas);
+// console.log(jonas);
 
-console.log(jonas.lastName);
-console.log(jonas['lastNam']);
+// console.log(jonas.lastName);
+// console.log(jonas['lastNam']);
 
-const nameFunction = name => name;
-const nameKey = "Name";
+// const nameFunction = name => name;
+// const nameKey = "Name";
 
-console.log(jonas[nameFunction('age')]);
-console.log(jonas["first" + nameKey]); //This is interesting!
-console.log(jonas["last" + nameKey]);
+// console.log(jonas[nameFunction('age')]);
+// console.log(jonas["first" + nameKey]); //This is interesting!
+// console.log(jonas["last" + nameKey]);
 
-let userInput = prompt(`What do you want to know about Jonas?\nfirstName, lastName, age, job, friends?`);
+// let userInput = prompt(`What do you want to know about Jonas?\nfirstName, lastName, age, job, friends?`);
 
-jonas[userInput] ? console.log(`${userInput}: ${jonas[userInput]}`) : console.log(`Jonas does not have such property!`);
+// jonas[userInput] ? console.log(`${userInput}: ${jonas[userInput]}`) : console.log(`Jonas does not have such property!`);
 
-jonas.location = 'Portugal';
-jonas['twitter'] = '@jonasschmedtman';
-console.log(jonas);
+// jonas.location = 'Portugal';
+// jonas['twitter'] = '@jonasschmedtman';
+// console.log(jonas);
 
-//Challenge
-// "Jonas has 3 friends, and his best friend is called Michael";
+// //Challenge
+// // "Jonas has 3 friends, and his best friend is called Michael";
 
-console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is ${jonas.friends[0]}`);
+// console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is ${jonas.friends[0]}`);
+
+// const jonas = {
+//     firstName: 'Jonas',
+//     lastName: 'Schmedtmann',
+//     birthYear: 1991,
+//     job: 'teacher',
+//     friends: ['Michael', 'Peter', 'Steven'], 
+//     hasDriversLicense: false,
+
+//     // calcAge: function(){;
+//     //     console.log(this); // to call the object 
+//     //     return 2037 - this.birthYear;
+//     // };
+
+//     calcAge: function(){
+//         this.age = 2037 - this.birthYear;
+//         console.log(this);
+//         return this.age;
+//     },
+
+//     jonasSummary: function(){
+//         this.summary = `${this.firstName} ${this.lastName} is ${this.age} years old. ${this.firstName} is a ${this.job}. His friends are ${this.friends}, which he ${this.hasDriversLicense ? `can` : `cannot`} drive around.`;
+//         return this.summary;
+//     }
+// };
+
+// console.log(jonas['calcAge']());
+// console.log(jonas['age']);
+
+// console.log(jonas['jonasSummary']());
+
+//Coding Challenge #3
+
