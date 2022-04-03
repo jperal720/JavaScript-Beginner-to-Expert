@@ -249,12 +249,26 @@
 
 // console.log(typeArr);
 
-let dice = Math.trunc(Math.random() * 6) + 1;
-console.log(`You rolled a ${dice}${dice === 6 ? `!` : ``}`);
+// let dice = Math.trunc(Math.random() * 6) + 1;
+// console.log(`You rolled a ${dice}${dice === 6 ? `!` : ``}`);
 
 
-while(dice !== 6){
-    dice = Math.trunc(Math.random() * 6) + 1;
-    console.log(`You rolled a ${dice}${dice === 6 ? `!` : ``}`);
-}
+// while(dice !== 6){
+//     dice = Math.trunc(Math.random() * 6) + 1;
+//     console.log(`You rolled a ${dice}${dice === 6 ? `!` : ``}`);
+// }
+
+//Coding Challenge #4
+
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+
+const calcTip = bill => bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.20;
+
+for(let i = 0; i < bills.length; i++){
+    tips.push(calcTip(bills[i]));
+    totals.push(bills[i] + tips[i]);
+    console.log(`The tip of ${bills[i]} is ${tips[i]}, coming out to a total of ${totals[i]}`);
+}   
 
