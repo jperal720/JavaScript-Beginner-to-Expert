@@ -272,3 +272,16 @@ for(let i = 0; i < bills.length; i++){
     console.log(`The tip of ${bills[i]} is ${tips[i]}, coming out to a total of ${totals[i]}`);
 }   
 
+const calcAverage = function (arr){
+    let total = 0 ;
+    for(let i = 0; i < arr.length; i++)
+        total += arr[i];
+
+    const avg = total / arr.length;
+
+    return avg;
+}
+
+const avg = calcAverage(totals);
+console.log(`Average of the array is ${avg}`);
+
