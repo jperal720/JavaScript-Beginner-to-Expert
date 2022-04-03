@@ -208,26 +208,53 @@
 
 //Coding Challenge #3
 
-const mark = {
-    fullName: "Mark",
-    mass: 78,
-    height: 1.69,
+// const mark = {
+//     fullName: "Mark",
+//     mass: 78,
+//     height: 1.69,
 
-    calcBMI: function(){
-        this.BMI = this.mass / (this.height ** 2);
-        return this.BMI;
-    }
+//     calcBMI: function(){
+//         this.BMI = this.mass / (this.height ** 2);
+//         return this.BMI;
+//     }
+// }
+
+// const john = {
+//     fullName: "John",
+//     mass: 200,
+//     height: 1.95,
+
+//     calcBMI: function(){
+//         this.BMI = this.mass / (this.height ** 2);
+//         return this.BMI
+//     }
+// }
+
+// console.log(`${mark['fullName']}(BMI: ${mark['calcBMI']()}) has a ${mark['BMI'] > john['calcBMI']() ? `higher` : `lower`} BMI than ${john['fullName']}(BMI: ${john['BMI']}))`);
+
+// const jonas = [
+//     'Jonas', 
+//     'Smith', 
+//     2037 - 1991,
+//     'teacher', 
+//     ['Michael', 'Max', "John"]
+// ];
+
+// const typeArr = [];
+
+// for (let i = 0; i < jonas.length; i++){
+//     console.log(jonas[i]);
+//     typeArr.push(typeof jonas[i]);
+// }
+
+// console.log(typeArr);
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+console.log(`You rolled a ${dice}${dice === 6 ? `!` : ``}`);
+
+
+while(dice !== 6){
+    dice = Math.trunc(Math.random() * 6) + 1;
+    console.log(`You rolled a ${dice}${dice === 6 ? `!` : ``}`);
 }
 
-const john = {
-    fullName: "John",
-    mass: 200,
-    height: 1.95,
-
-    calcBMI: function(){
-        this.BMI = this.mass / (this.height ** 2);
-        return this.BMI
-    }
-}
-
-console.log(`${mark['fullName']}(BMI: ${mark['calcBMI']()}) has a ${mark['BMI'] > john['calcBMI']() ? `higher` : `lower`} BMI than ${john['fullName']}(BMI: ${john['BMI']}))`);
