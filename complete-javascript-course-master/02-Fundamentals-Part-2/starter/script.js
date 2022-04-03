@@ -208,3 +208,26 @@
 
 //Coding Challenge #3
 
+const mark = {
+    fullName: "Mark",
+    mass: 78,
+    height: 1.69,
+
+    calcBMI: function(){
+        this.BMI = this.mass / (this.height ** 2);
+        return this.BMI;
+    }
+}
+
+const john = {
+    fullName: "John",
+    mass: 200,
+    height: 1.95,
+
+    calcBMI: function(){
+        this.BMI = this.mass / (this.height ** 2);
+        return this.BMI
+    }
+}
+
+console.log(`${mark['fullName']}(BMI: ${mark['calcBMI']()}) has a ${mark['BMI'] > john['calcBMI']() ? `higher` : `lower`} BMI than ${john['fullName']}(BMI: ${john['BMI']}))`);
