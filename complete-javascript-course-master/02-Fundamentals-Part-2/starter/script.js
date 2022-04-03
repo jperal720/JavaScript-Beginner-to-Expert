@@ -92,22 +92,86 @@
 
 //Coding Challenge #1
 
-const scoresDolphins = [85, 54, 41];
-const scoresKoalas = [23, 34, 27];
+// const scoresDolphins = [85, 54, 41];
+// const scoresKoalas = [23, 34, 27];
 
-const calcAverage = scores => (scores[0] + scores[1] + scores[2]) / 3;
+// const calcAverage = scores => (scores[0] + scores[1] + scores[2]) / 3;
 
-const checkWinner = function( avgDolphins, avgKoalas){
-    if (avgDolphins > avgKoalas && avgDolphins / 2 >= avgKoalas)
-        return `Dolphins Win (${avgDolphins} vs. ${avgKoalas})4!`;
+// const checkWinner = function( avgDolphins, avgKoalas){
+//     if (avgDolphins / 2 >= avgKoalas)
+//         return `Dolphins Win (${avgDolphins} vs. ${avgKoalas})!`;
 
-    else if (avgKoalas > avgDolphins && avgKoalas / 2 >= avgDolphins)
-        return `Koalas Win (${avgKoalas} vs. ${avgDolphins})!`;
+//     else if (avgKoalas / 2 >= avgDolphins)
+//         return `Koalas Win (${avgKoalas} vs. ${avgDolphins})!`;
 
-    return `No Team Wins (${avgDolphins} vs. ${avgKoalas})!`;
-}
+//     return `No Team Wins (${avgDolphins} vs. ${avgKoalas})!`;
+// }
 
-const avgDolphins = calcAverage(scoresDolphins), avgKoalas = calcAverage(scoresKoalas);
+// const avgDolphins = calcAverage(scoresDolphins), avgKoalas = calcAverage(scoresKoalas);
 
-console.log(checkWinner(avgDolphins, avgKoalas));
+// console.log(checkWinner(avgDolphins, avgKoalas));
 
+
+//Add elements
+// const friends = ['Michael', 'Steven', 'Jay'];
+// friends.push('Nathan');
+
+// console.log(friends);
+
+// console.log(`.unshift and .push return the new length of the array after adding the element`);
+// let newIndex = friends.unshift("Jonathan");
+// console.log(friends);
+// console.log(newIndex);
+
+// //Remove elements
+// friends.pop();
+// console.log(friends);
+
+// const shiftedElement = friends.shift();
+// console.log(shiftedElement);
+// console.log(friends);
+
+// console.log(`The name "Max" is in the friends array: ${friends.includes("Max")}`);
+
+//Coding Challenge #2;
+
+// const calcTip = bill => (bill >= 50 && bill <= 300) ? bill * 0.15 : bill * 0.20
+
+// const bills = [125, 555, 44];
+// const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+// const total = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+
+// console.log(`Bills: ${bills}\nTips: ${tips}\nTotal: ${total}`);
+
+const jonas = { //Object literal syntax
+    firstName: "Jonas",
+    lastName: "Schmedtmann",
+    age: 2037 - 1991,
+    job: "Teacher",
+    friends: ['Michael', 'Peter', 'Steven']
+};
+
+console.log(jonas);
+
+console.log(jonas.lastName);
+console.log(jonas['lastNam']);
+
+const nameFunction = name => name;
+const nameKey = "Name";
+
+console.log(jonas[nameFunction('age')]);
+console.log(jonas["first" + nameKey]); //This is interesting!
+console.log(jonas["last" + nameKey]);
+
+let userInput = prompt(`What do you want to know about Jonas?\nfirstName, lastName, age, job, friends?`);
+
+jonas[userInput] ? console.log(`${userInput}: ${jonas[userInput]}`) : console.log(`Jonas does not have such property!`);
+
+jonas.location = 'Portugal';
+jonas['twitter'] = '@jonasschmedtman';
+console.log(jonas);
+
+//Challenge
+// "Jonas has 3 friends, and his best friend is called Michael";
+
+console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is ${jonas.friends[0]}`);
