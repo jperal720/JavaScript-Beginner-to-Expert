@@ -1,5 +1,5 @@
-'use strict';
- 
+"use strict";
+
 // let hasDriversLicense = false;
 // const passTest = true;
 
@@ -80,7 +80,6 @@
 
 // const fruitCutter = num => `${num} fruits cut successfully!`;
 
-
 // const fruitProcessor = function (apples, oranges) {
 //     console.log(fruitCutter(apples + oranges));
 
@@ -110,7 +109,6 @@
 // const avgDolphins = calcAverage(scoresDolphins), avgKoalas = calcAverage(scoresKoalas);
 
 // console.log(checkWinner(avgDolphins, avgKoalas));
-
 
 //Add elements
 // const friends = ['Michael', 'Steven', 'Jay'];
@@ -181,11 +179,11 @@
 //     lastName: 'Schmedtmann',
 //     birthYear: 1991,
 //     job: 'teacher',
-//     friends: ['Michael', 'Peter', 'Steven'], 
+//     friends: ['Michael', 'Peter', 'Steven'],
 //     hasDriversLicense: false,
 
 //     // calcAge: function(){;
-//     //     console.log(this); // to call the object 
+//     //     console.log(this); // to call the object
 //     //     return 2037 - this.birthYear;
 //     // };
 
@@ -233,10 +231,10 @@
 // console.log(`${mark['fullName']}(BMI: ${mark['calcBMI']()}) has a ${mark['BMI'] > john['calcBMI']() ? `higher` : `lower`} BMI than ${john['fullName']}(BMI: ${john['BMI']}))`);
 
 // const jonas = [
-//     'Jonas', 
-//     'Smith', 
+//     'Jonas',
+//     'Smith',
 //     2037 - 1991,
-//     'teacher', 
+//     'teacher',
 //     ['Michael', 'Max', "John"]
 // ];
 
@@ -252,7 +250,6 @@
 // let dice = Math.trunc(Math.random() * 6) + 1;
 // console.log(`You rolled a ${dice}${dice === 6 ? `!` : ``}`);
 
-
 // while(dice !== 6){
 //     dice = Math.trunc(Math.random() * 6) + 1;
 //     console.log(`You rolled a ${dice}${dice === 6 ? `!` : ``}`);
@@ -260,28 +257,27 @@
 
 //Coding Challenge #4
 
-const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
-const tips = [];
-const totals = [];
+// const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+// const tips = [];
+// const totals = [];
 
-const calcTip = bill => bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.20;
+// const calcTip = bill => bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.20;
 
-for(let i = 0; i < bills.length; i++){
-    tips.push(calcTip(bills[i]));
-    totals.push(bills[i] + tips[i]);
-    console.log(`The tip of ${bills[i]} is ${tips[i]}, coming out to a total of ${totals[i]}`);
-}   
+// for(let i = 0; i < bills.length; i++){
+//     tips.push(calcTip(bills[i]));
+//     totals.push(bills[i] + tips[i]);
+//     console.log(`The tip of ${bills[i]} is ${tips[i]}, coming out to a total of ${totals[i]}`);
+// }
 
-const calcAverage = function (arr){
-    let total = 0 ;
-    for(let i = 0; i < arr.length; i++)
-        total += arr[i];
+// const calcAverage = function (arr){
+//     let total = 0 ;
+//     for(let i = 0; i < arr.length; i++)
+//         total += arr[i];
 
-    const avg = total / arr.length;
+//     const avg = total / arr.length;
 
-    return avg;
-}
+//     return avg;
+// }
 
-const avg = calcAverage(totals);
-console.log(`Average of the array is ${avg}`);
-
+// const avg = calcAverage(totals);
+// console.log(`Average of the array is ${avg}`);
