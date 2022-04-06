@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(255, 238, 215);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  margin: 0px 30px 0px 30px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+.first {
+  color: rgb(95, 16, 16);
+}
+
+#your-name {
+  background-color: rgb(250, 199, 136);
+  border: 5px dashed rgb(29, 85, 85);
+}
