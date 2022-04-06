@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box; /*This is used so that box's widths are always what they are assigned*/
 }
 
 body {
@@ -11,14 +12,53 @@ body {
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 35px;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+h2 {
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+h6 {
+  text-align: center;
+  font-weight: bold;
+}
+
+p {
+  margin: 0 0 20px 0;
 }
 
 .first {
   color: rgb(95, 16, 16);
+  margin: 0 0 20px 0;
 }
 
 #your-name {
   background-color: rgb(250, 199, 136);
   border: 5px dashed rgb(29, 85, 85);
+  width: 400px;
+  margin: 50px 0 0 0;
+  fill: center;
+  padding: 10px 60px 10px 60px;
+}
+
+#your-name h2 {
+  color: rgb(29, 85, 85);
+}
+
+input,
+button {
+  padding: 5px;
+  font-size: 12px;
+}
+
+a {
+  background-color: gray;
+}
+
+#buenafe-image {
+  width: 300px;
 }
