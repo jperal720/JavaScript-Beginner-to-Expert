@@ -1,4 +1,4 @@
-let number = Math.trunc(Math.random() * 20);
+let number = Math.trunc(Math.random() * 20) + 1;
 const score = document.querySelector('.score');
 const highScore = document.querySelector('.highscore');
 const message = document.querySelector('.message');
@@ -19,6 +19,7 @@ document.querySelector('.again').addEventListener('click', function () {
   score.textContent = '20';
   number = Math.trunc(Math.random() * 20);
   gameFinished = false;
+  document.querySelector('.number').textContent = '?';
 });
 
 const compare = function (userGuess) {
@@ -41,6 +42,7 @@ const compare = function (userGuess) {
 
 const finished = function () {
   gameFinished = true;
+  document.querySelector('.number').textContent = number;
   if (score.textContent == 0) {
     message.textContent = 'Sorry, you ran out of tries :(';
     return;
