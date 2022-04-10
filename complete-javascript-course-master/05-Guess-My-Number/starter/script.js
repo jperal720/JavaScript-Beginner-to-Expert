@@ -19,7 +19,9 @@ document.querySelector('.again').addEventListener('click', function () {
   score.textContent = '20';
   number = Math.trunc(Math.random() * 20);
   gameFinished = false;
+  document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').textContent = '?';
+  document.querySelector('.number').style.width = '15rem';
 });
 
 const compare = function (userGuess) {
@@ -42,7 +44,9 @@ const compare = function (userGuess) {
 
 const finished = function () {
   gameFinished = true;
+  document.querySelector('body').style.backgroundColor = '#60b347';
   document.querySelector('.number').textContent = number;
+  document.querySelector('.number').style.width = '30rem';
   if (score.textContent == 0) {
     message.textContent = 'Sorry, you ran out of tries :(';
     return;
