@@ -7,19 +7,25 @@ const btnsOpenModal = document.querySelectorAll('.show-modal');
 
 console.log(btnsOpenModal);
 
+const openModal = function () {
+  modalWindow.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
+const closeModal = function () {
+  modalWindow.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
+
 for (let i = 0; i < btnsOpenModal.length; i++)
-  btnsOpenModal[i].addEventListener('click', function () {
-    modalWindow.classList.remove('hidden');
-    overlay.classList.remove('hidden');
-  });
+  btnsOpenModal[i].addEventListener('click', openModal);
 
-overlay.addEventListener('click', function () {
-  console.log('clicked on overaly');
-  modalWindow.classList.add('hidden');
-  overlay.classList.add('hidden');
-});
+overlay.addEventListener('click', closeModal);
+btnCloseModal.addEventListener('click', closeModal);
 
-btnCloseModal.addEventListener('click', function () {
-  modalWindow.classList.add('hidden');
-  overlay.classList.add('hidden');
+document.addEventListener('keydown', function (event) {
+  console.log(event);
+  if (event.key === 'Escape') {
+    modalWindow.classList.add('hidden');
+    overlay.classList.add('hidden');
+  }
 });
