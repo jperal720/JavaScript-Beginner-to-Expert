@@ -2,13 +2,9 @@
 
 //* Selecting elements by their IDs
 let player0Turn = true;
-// let localCurrentScore0 = 0; //Keeps track of the currentScore before it is set as textContent
-// let localCurrentScore1 = 0; //Keeps track of the currentScore before it is set as textContent
 let gameOver = false; //Determines if game is over
 let currentScore0 = document.getElementById('current--0');
 let currentScore1 = document.getElementById('current--1');
-// let localScore0 = 0;
-// let localScore1 = 0;
 let score0 = document.getElementById('score--0');
 let score1 = document.getElementById('score--1');
 //! .getElementById is actually faster than query selector, but it is not very relevant, unless you need  to select a large amount of IDs at once.;
@@ -20,6 +16,7 @@ const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 const btnNew = document.querySelector('.btn--new');
 
+dice.classList.add('hidden');
 currentScore0.textContent = 0;
 currentScore1.textContent = 0;
 score0.textContent = 0;
@@ -33,7 +30,7 @@ const resetGame = function () {
   if (player0.classList.contains('player--winner'))
     player0.classList.remove('player--winner');
   else if (player1.classList.contains('player--winner'))
-    player1.classList.remove('player-winner');
+    player1.classList.remove('player--winner');
 
   player0.classList.add('player--active');
   if (player1.classList.contains('player--active'))
