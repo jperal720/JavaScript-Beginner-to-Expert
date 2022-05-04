@@ -38,7 +38,7 @@
 
 // calcAge(1992);
 
-var firstName = 'Matilda';
+// var firstName = 'Matilda';
 
 // const jonathan = {
 //   firstName: 'Jonathan',
@@ -93,14 +93,32 @@ var firstName = 'Matilda';
  * @param {*} b
  * @returns
  */
-const addExpression = function (a, b) {
-  console.log('arguments:', arguments[2]);
-  return a + b;
+// const addExpression = function (a, b) {
+//   console.log('arguments:', arguments[2]);
+//   return a + b;
+// };
+
+// addExpression(2, 5);
+// addExpression(2, 5, 8, 10);
+
+// const addArrow = (a, b) => a + b;
+
+// addArrow(2, 5);
+
+let age = 30,
+  oldAge = age;
+age = 31;
+
+console.log(age);
+console.log(oldAge);
+
+const me = {
+  name: 'Jonas',
+  age: 30,
 };
 
-addExpression(2, 5);
-addExpression(2, 5, 8, 10);
+const friend = me;
 
-const addArrow = (a, b) => a + b;
-
-addArrow(2, 5);
+friend.age = 27;
+console.log('friend:', friend);
+console.log('me:', me);
