@@ -22,3 +22,23 @@
 // variable();
 // // console.log(car);
 
+// console.log(this);
+
+// const calcAge = function(birthYear){
+//     console.log(2037 - birthYear);
+//     console.log(this);
+// };
+
+// calcAge(1992);
+
+// var x = 10;
+
+// const calcAge = birthYear => {
+//     console.log(2037 - birthYear);
+//     console.log(this.x);
+// };
+
+// calcAge(1992);
+
+
+
