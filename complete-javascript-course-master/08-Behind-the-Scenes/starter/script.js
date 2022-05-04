@@ -1,23 +1,24 @@
 'use strict';
 
-const n1 = 'nice';
+// const variable = function (n1, n2) {
 
-const variable = function (n1, n2) {
-  const thing = true;
-  console.log(`nice pitch, ${n2.first}`);
+//   /**
+//    * Checking if keyword var ignores scope on functions as well
+//    * !I already know it ignores scope inside blocks
+//    */
+  
+//   const variable2 = function(){
+//     var car = true;
+//   }
 
-  const functioning = function (n3) {
-    console.log();
-  };
-  functioning(null);
+//   variable2();
 
-  return n2;
-};
+  
 
-const name = {
-  first: 'Jonathan',
-  last: 'Peral Gort',
-  fullName: this.first + this.last,
-};
+//   console.log(`car: ${car}`);
+//   return n2;
+// };
 
-variable('every step you take', name);
+// variable();
+// // console.log(car);
+
