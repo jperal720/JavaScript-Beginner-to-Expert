@@ -115,10 +115,27 @@ console.log(oldAge);
 const me = {
   name: 'Jonas',
   age: 30,
+  family: ['Alice', 'Bob'],
 };
 
+//!Pointing to the object, not copying!
 const friend = me;
 
 friend.age = 27;
+friend.family.push('Nina');
+friend.family.push('John');
 console.log('friend:', friend);
 console.log('me:', me);
+
+//!Copying objects
+
+//* This is considered to be a shallow copy
+//* It will not create a copy of the objects stored in the properties, like arrays.
+const friendCopy = Object.assign({}, me);
+
+friendCopy.age = 31;
+
+friend.family.push('Jojhan');
+
+console.log('friend:', friend);
+console.log('friendCopy:', friendCopy);
