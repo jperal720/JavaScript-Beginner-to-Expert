@@ -52,7 +52,14 @@ const [starter, main] = restaurant.order(2, 1);
 
 console.log(starter, main);
 
+//!Nested destructuring
 const nestedArray = [2, 4, [5, 6]];
 const [i, , [x, y]] = nestedArray;
 
 console.log(i, x, y);
+
+//* Default values
+//!This can be useful when getting data, for example, from an API; sometimes we don't know the length of the arrays
+
+const [p = 1, q = 1, r = 1] = [8, 9];
+console.log(p, q, r);
