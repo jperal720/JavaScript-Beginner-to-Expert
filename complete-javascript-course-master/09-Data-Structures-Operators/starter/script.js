@@ -41,11 +41,11 @@ const restaurant = {
   },
 };
 
-restaurant.orderReceived({
-  names: 'Jonathan Peral',
-  time: '01:52',
-  sex: 'Male',
-});
+// restaurant.orderReceived({
+//   names: 'Jonathan Peral',
+//   time: '01:52',
+//   sex: 'Male',
+// });
 
 // const arr = [2, 3, 4];
 // const [x, y, z] = arr;
@@ -105,35 +105,59 @@ restaurant.orderReceived({
 // console.log('starterMenu:', starter);
 // console.log('cat2:', cat2);
 
-//*Mutating variables
-const {
-  menu: menu2 = [],
-  starterMenu: starter = [],
-  categories: cat2,
-} = restaurant;
+// //*Mutating variables
+// const {
+//   menu: menu2 = [],
+//   starterMenu: starter = [],
+//   categories: cat2,
+// } = restaurant;
 
-let a = 11;
-let b = 99;
-const obj = { a: 23, b: 7, c: 14 };
+// let a = 11;
+// let b = 99;
+// const obj = { a: 23, b: 7, c: 14 };
 
-console.log('Before mutation:');
-console.log('a:', a);
-console.log('b:', b);
+// console.log('Before mutation:');
+// console.log('a:', a);
+// console.log('b:', b);
 
-({ a, b } = obj);
+// ({ a, b } = obj);
 
-console.log('After mutation:');
-console.log('a:', a);
-console.log('b:', b);
+// console.log('After mutation:');
+// console.log('a:', a);
+// console.log('b:', b);
 
-//*Destructuring objects inside of objects
-const {
-  openingHours: {
-    fri: { open: o, close: c },
-  },
-} = restaurant;
+// //*Destructuring objects inside of objects
+// const {
+//   openingHours: {
+//     fri: { open: o, close: c },
+//   },
+// } = restaurant;
 
-console.log('open:', o);
-console.log('close:', c);
-console.log('oneError:', oneError);
-console.log('two:', two);
+// console.log('open:', o);
+// console.log('close:', c);
+// console.log('oneError:', oneError);
+// console.log('two:', two);
+
+//* Using the spread operator.
+//! It essentially takes all of the values of an array and inputs them at that given part of the new array; much like destructuring the array
+//!- except we do not give it variables to store the destructured values.
+const arr = [7, 8, 9];
+const newArr = [1, 2, ...arr, 10, 11];
+console.log('arr:', arr);
+console.log('newArr:', newArr);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log('newMenu:', newMenu);
+
+//*Copy Array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+//*Join 2 Arrays
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const joinedArr = [...arr1, ...arr2];
+console.log('joinedArr:', joinedArr);
+
+//Iterables are: strings, arrays, maps, sets. //!However, they are not objects!
+const nameOfMine = 'Jonathan';
+console.log('nameOfMine spread:', ...nameOfMine);
