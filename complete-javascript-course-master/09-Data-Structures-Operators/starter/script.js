@@ -39,6 +39,12 @@ const restaurant = {
       `${n} just made an order at ${this.name}; his order came in at ${t}`
     );
   },
+
+  orderPasta: function (ingredient1, ingredient2, ingredient3) {
+    console.log(
+      `Here's your delicious pasta with ${ingredient1}, ${ingredient2}, and ${ingredient3}!`
+    );
+  },
 };
 
 // restaurant.orderReceived({
@@ -161,3 +167,17 @@ console.log('joinedArr:', joinedArr);
 //Iterables are: strings, arrays, maps, sets. //!However, they are not objects!
 const nameOfMine = 'Jonathan';
 console.log('nameOfMine spread:', ...nameOfMine);
+
+//* Calling orderPasta function
+const listOfIngredients = ['alio', 'olio', 'peperoncino'];
+
+// const listOfIngredients = [
+//   prompt("Let's make pasta! Ingredient 1: "),
+//   prompt('Ingredient 2: '),
+//   prompt('Ingredient 3: '),
+// ];
+
+restaurant.orderPasta(...listOfIngredients);
+
+//!Since 2018, JS's spread operator supports objects
+console.log('restaurant:', { ...restaurant });
