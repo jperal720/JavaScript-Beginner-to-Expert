@@ -145,39 +145,72 @@ const restaurant = {
 // console.log('two:', two);
 
 //* Using the spread operator.
-//! It essentially takes all of the values of an array and inputs them at that given part of the new array; much like destructuring the array
-//!- except we do not give it variables to store the destructured values.
-const arr = [7, 8, 9];
-const newArr = [1, 2, ...arr, 10, 11];
+// //! It essentially takes all of the values of an array and inputs them at that given part of the new array; much like destructuring the array
+// //!- except we do not give it variables to store the destructured values.
+// const arr = [7, 8, 9];
+// const newArr = [1, 2, ...arr, 10, 11];
+// console.log('arr:', arr);
+// console.log('newArr:', newArr);
+
+// const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+// console.log('newMenu:', newMenu);
+
+// //*Copy Array
+// const mainMenuCopy = [...restaurant.mainMenu];
+
+// //*Join 2 Arrays
+// const arr1 = [1, 2, 3];
+// const arr2 = [4, 5, 6];
+// const joinedArr = [...arr1, ...arr2];
+// console.log('joinedArr:', joinedArr);
+
+// //Iterables are: strings, arrays, maps, sets. //!However, they are not objects!
+// const nameOfMine = 'Jonathan';
+// console.log('nameOfMine spread:', ...nameOfMine);
+
+// //* Calling orderPasta function
+// const listOfIngredients = ['alio', 'olio', 'peperoncino'];
+
+// // const listOfIngredients = [
+// //   prompt("Let's make pasta! Ingredient 1: "),
+// //   prompt('Ingredient 2: '),
+// //   prompt('Ingredient 3: '),
+// // ];
+
+// restaurant.orderPasta(...listOfIngredients);
+
+// //!Since 2018, JS's spread operator supports objects
+// console.log('restaurant:', { ...restaurant });
+
+//! SPREAD because of right-hand side of the assignment operator
+const arr = [1, 2, ...[3, 4]];
+
+//! REST because on left-hand side of the assignment operator
+const [a, b, ...others] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 console.log('arr:', arr);
-console.log('newArr:', newArr);
+console.log('a:', a);
+console.log('b:', b);
+console.log('others:', others);
 
-const newMenu = [...restaurant.mainMenu, 'Gnocci'];
-console.log('newMenu:', newMenu);
+//* REST on arrays
+const [...completeMenu] = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-//*Copy Array
-const mainMenuCopy = [...restaurant.mainMenu];
+console.log('completeMenu:', completeMenu);
 
-//*Join 2 Arrays
-const arr1 = [1, 2, 3];
-const arr2 = [4, 5, 6];
-const joinedArr = [...arr1, ...arr2];
-console.log('joinedArr:', joinedArr);
+//* REST on objects
+const { sat, ...weekdays } = restaurant.openingHours;
 
-//Iterables are: strings, arrays, maps, sets. //!However, they are not objects!
-const nameOfMine = 'Jonathan';
-console.log('nameOfMine spread:', ...nameOfMine);
+console.log('sat:', sat);
+console.log('weekdays:', weekdays);
 
-//* Calling orderPasta function
-const listOfIngredients = ['alio', 'olio', 'peperoncino'];
+//* REST on paramaters of a function
 
-// const listOfIngredients = [
-//   prompt("Let's make pasta! Ingredient 1: "),
-//   prompt('Ingredient 2: '),
-//   prompt('Ingredient 3: '),
-// ];
+function sum(...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
 
-restaurant.orderPasta(...listOfIngredients);
+  console.log('the total sum is:', sum);
+}
 
-//!Since 2018, JS's spread operator supports objects
-console.log('restaurant:', { ...restaurant });
+sum(1, 5, 3, 3);
