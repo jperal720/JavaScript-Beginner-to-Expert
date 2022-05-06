@@ -48,18 +48,27 @@ const restaurant = {
 
 // console.log(main, secondary);
 
-const [starter, main] = restaurant.order(2, 1);
+// const [starter, main] = restaurant.order(2, 1);
 
-console.log(starter, main);
+// console.log(starter, main);
 
-//!Nested destructuring
-const nestedArray = [2, 4, [5, 6]];
-const [i, , [x, y]] = nestedArray;
+// //!Nested destructuring
+// const nestedArray = [2, 4, [5, 6]];
+// const [i, , [x, y]] = nestedArray;
 
-console.log(i, x, y);
+// console.log(i, x, y);
 
-//* Default values
-//!This can be useful when getting data, for example, from an API; sometimes we don't know the length of the arrays
+// //* Default values
+// //!This can be useful when getting data, for example, from an API; sometimes we don't know the length of the arrays
 
-const [p = 1, q = 1, r = 1] = [8, 9];
-console.log(p, q, r);
+// const [p = 1, q = 1, r = 1] = [8, 9];
+// console.log(p, q, r);
+
+//* Destructuring objects
+//! Caution: when destructuring objects, you MUST make sure that the name of the variables are the same
+//! as the names of the properties in the object; otherwise, they will be 'undefined'.
+
+const { name, openingHours, categories } = restaurant;
+console.log('name:', name);
+console.log('openingHours:', openingHours);
+console.log('categories:', categories);
