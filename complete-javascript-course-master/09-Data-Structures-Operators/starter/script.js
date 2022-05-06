@@ -45,6 +45,11 @@ const restaurant = {
       `Here's your delicious pasta with ${ingredient1}, ${ingredient2}, and ${ingredient3}!`
     );
   },
+
+  orderPizza: function (ingredient1, ...otherIngredients) {
+    console.log('ingredient1:', ingredient1);
+    console.log('otherIngredients:', otherIngredients);
+  },
 };
 
 // restaurant.orderReceived({
@@ -205,6 +210,7 @@ console.log('sat:', sat);
 console.log('weekdays:', weekdays);
 
 //* REST on paramaters of a function
+//! REST keyword on parametsers is commonly used in JS
 
 function sum(...numbers) {
   let sum = 0;
@@ -214,3 +220,10 @@ function sum(...numbers) {
 }
 
 sum(1, 5, 3, 3);
+
+const x = [23, 5, 7];
+
+sum(...x);
+
+const ingredients = ['tomato sauce', 'mozzarella', 'alio', 'olio', 'basil'];
+restaurant.orderPizza(...ingredients);
