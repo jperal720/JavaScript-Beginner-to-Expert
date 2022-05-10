@@ -246,3 +246,8 @@ if (restaurant.orderPizza) {
 }
 
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+restaurant.numGuests = 0;
+const guestCorrect = restaurant.numGuests ?? 10; //*Nullish coalescing operator, introduced in ES2020
+//!Nullish values are: null or undefined - not the same as falsy values
+console.log('guestCorrect:', guestCorrect);
