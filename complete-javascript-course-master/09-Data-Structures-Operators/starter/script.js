@@ -184,46 +184,65 @@ const restaurant = {
 
 // restaurant.orderPasta(...listOfIngredients);
 
-// //!Since 2018, JS's spread operator supports objects
-// console.log('restaurant:', { ...restaurant });
+// // //!Since 2018, JS's spread operator supports objects
+// // console.log('restaurant:', { ...restaurant });
 
-//! SPREAD because of right-hand side of the assignment operator
-const arr = [1, 2, ...[3, 4]];
+// //! SPREAD because of right-hand side of the assignment operator
+// const arr = [1, 2, ...[3, 4]];
 
-//! REST because on left-hand side of the assignment operator
-const [a, b, ...others] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// //! REST because on left-hand side of the assignment operator
+// const [a, b, ...others] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-console.log('arr:', arr);
-console.log('a:', a);
-console.log('b:', b);
-console.log('others:', others);
+// console.log('arr:', arr);
+// console.log('a:', a);
+// console.log('b:', b);
+// console.log('others:', others);
 
-//* REST on arrays
-const [...completeMenu] = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// //* REST on arrays
+// const [...completeMenu] = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-console.log('completeMenu:', completeMenu);
+// console.log('completeMenu:', completeMenu);
 
-//* REST on objects
-const { sat, ...weekdays } = restaurant.openingHours;
+// //* REST on objects
+// const { sat, ...weekdays } = restaurant.openingHours;
 
-console.log('sat:', sat);
-console.log('weekdays:', weekdays);
+// console.log('sat:', sat);
+// console.log('weekdays:', weekdays);
 
-//* REST on paramaters of a function
-//! REST keyword on parametsers is commonly used in JS
+// //* REST on paramaters of a function
+// //! REST keyword on parametsers is commonly used in JS
 
-function sum(...numbers) {
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+// function sum(...numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
 
-  console.log('the total sum is:', sum);
+//   console.log('the total sum is:', sum);
+// }
+
+// sum(1, 5, 3, 3);
+
+// const x = [23, 5, 7];
+
+// sum(...x);
+
+// const ingredients = ['tomato sauce', 'mozzarella', 'alio', 'olio', 'basil'];
+// restaurant.orderPizza(...ingredients);
+
+//* Short circuiting using || operator
+
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+//* Short circuiting using && operator - works opposite to the || operand
+// Returns the first falsy value, without considering the other values
+console.log(0 && 'Jonathan');
+console.log(7 && 'Jonathan');
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('pasta', 'pasta');
 }
 
-sum(1, 5, 3, 3);
-
-const x = [23, 5, 7];
-
-sum(...x);
-
-const ingredients = ['tomato sauce', 'mozzarella', 'alio', 'olio', 'basil'];
-restaurant.orderPizza(...ingredients);
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
