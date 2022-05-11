@@ -5,52 +5,52 @@
 //   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // // Data needed for first part of the section
-// const restaurant = {
-//   name: 'Classico Italiano',
-//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
-//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-//   order: function (starterIndex, mainIndex) {
-//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-//   },
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 
-//   openingHours: {
-//     thu: {
-//       open: 12,
-//       close: 22,
-//     },
-//     fri: {
-//       open: 11,
-//       close: 23,
-//     },
-//     sat: {
-//       open: 0, // Open 24 hours
-//       close: 24,
-//     },
-//   },
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
 
-//   //*Here we destrcture in the function parameters ahead of time
-//   //!Caution: Make sure names of the parameters are the same as the properties of the object that you are passing into the function
-//   //!If we're not sure, we can set default values, for good measure - we can also change the name of the passed properties, if we wish
-//   orderReceived: function ({ time: t = '00:00', name: n = 'John Doe' }) {
-//     console.log(
-//       `${n} just made an order at ${this.name}; his order came in at ${t}`
-//     );
-//   },
+  //*Here we destrcture in the function parameters ahead of time
+  //!Caution: Make sure names of the parameters are the same as the properties of the object that you are passing into the function
+  //!If we're not sure, we can set default values, for good measure - we can also change the name of the passed properties, if we wish
+  orderReceived: function ({ time: t = '00:00', name: n = 'John Doe' }) {
+    console.log(
+      `${n} just made an order at ${this.name}; his order came in at ${t}`
+    );
+  },
 
-//   orderPasta: function (ingredient1, ingredient2, ingredient3) {
-//     console.log(
-//       `Here's your delicious pasta with ${ingredient1}, ${ingredient2}, and ${ingredient3}!`
-//     );
-//   },
+  orderPasta: function (ingredient1, ingredient2, ingredient3) {
+    console.log(
+      `Here's your delicious pasta with ${ingredient1}, ${ingredient2}, and ${ingredient3}!`
+    );
+  },
 
-//   orderPizza: function (ingredient1, ...otherIngredients) {
-//     console.log('ingredient1:', ingredient1);
-//     console.log('otherIngredients:', otherIngredients);
-//   },
-// };
+  orderPizza: function (ingredient1, ...otherIngredients) {
+    console.log('ingredient1:', ingredient1);
+    console.log('otherIngredients:', otherIngredients);
+  },
+};
 
 // restaurant.orderReceived({
 //   names: 'Jonathan Peral',
@@ -284,69 +284,79 @@
 
 //?CHALLENGE 1
 
-const players1 = [];
-const players2 = [];
+// const players1 = [];
+// const players2 = [];
 
-const gk1 = 'John Cena';
-const fieldPlayers1 = [
-  'Messi',
-  'Gaynaldo',
-  'Ronaldo',
-  'Maradona',
-  'Madonna',
-  'Michael Jackson',
-  'Michael Jordan',
-  'Justin Bieber',
-  'Selena Glomez',
-  'Kaka',
-];
+// const gk1 = 'John Cena';
+// const fieldPlayers1 = [
+//   'Messi',
+//   'Gaynaldo',
+//   'Ronaldo',
+//   'Maradona',
+//   'Madonna',
+//   'Michael Jackson',
+//   'Michael Jordan',
+//   'Justin Bieber',
+//   'Selena Glomez',
+//   'Kaka',
+// ];
 
-const gk2 = 'Shakira';
-const fieldPlayers2 = [
-  'Sami nami na',
-  'Waka Waka eh eh',
-  'this is for africa',
-  'Pique',
-  'Gayque',
-  'Ronaldinho',
-  'Soxer',
-  '64',
-  'Teenage Mutant Ninja',
-  'Turtle',
-];
+// const gk2 = 'Shakira';
+// const fieldPlayers2 = [
+//   'Sami nami na',
+//   'Waka Waka eh eh',
+//   'this is for africa',
+//   'Pique',
+//   'Gayque',
+//   'Ronaldinho',
+//   'Soxer',
+//   '64',
+//   'Teenage Mutant Ninja',
+//   'Turtle',
+// ];
 
-players1.push(gk1, ...fieldPlayers1);
-players2.push(gk2, ...fieldPlayers2);
+// players1.push(gk1, ...fieldPlayers1);
+// players2.push(gk2, ...fieldPlayers2);
 
-const allPlayers = [...players1, ...players2];
+// const allPlayers = [...players1, ...players2];
 
-const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
-const players2Final = [...players2, 'GayNaldo', 'Babaldo', 'Feraldo'];
+// const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+// const players2Final = [...players2, 'GayNaldo', 'Babaldo', 'Feraldo'];
 
-const game = {
-  odds: ['team1', 'draw', 'team2'],
-};
+// const game = {
+//   odds: ['team1', 'draw', 'team2'],
+// };
 
-const printGoals = function (...player) {
-  console.log(player);
+// const printGoals = function (...player) {
+//   console.log(player);
 
-  console.log('Total number of goals: ' + player.length);
-};
+//   console.log('Total number of goals: ' + player.length);
+// };
 
-const team1 = {
-  name: 'Liverpool FC',
-  roster: players1Final,
-  odds: 0.54,
-};
+// const team1 = {
+//   name: 'Liverpool FC',
+//   roster: players1Final,
+//   odds: 0.54,
+// };
 
-const team2 = {
-  name: 'Santos FC',
-  roster: players2Final,
-  odds: 0.54,
-};
+// const team2 = {
+//   name: 'Santos FC',
+//   roster: players2Final,
+//   odds: 0.54,
+// };
 
-printGoals('Legayski', 'Gaynaldo');
+// printGoals('Legayski', 'Gaynaldo');
 
-team2.odds > team1.odds && console.log('Team1 Wins!');
-team1.odds > team2.odds && console.log('Team2 Wins!');
-team1.odds > team2.odds || team2.odds > team1.odds || console.log('Draw!');
+// team2.odds > team1.odds && console.log('Team1 Wins!');
+// team1.odds > team2.odds && console.log('Team2 Wins!');
+// team1.odds > team2.odds || team2.odds > team1.odds || console.log('Draw!');
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+//* for-of loop, aka. enhanced for loop
+for (const item of menu) console.log(item);
+
+//*destructuring array of values
+for (const [num, item] of menu.entries()) {
+  console.log(`${num + 1}: ${item} is worth so-and-so`);
+}
