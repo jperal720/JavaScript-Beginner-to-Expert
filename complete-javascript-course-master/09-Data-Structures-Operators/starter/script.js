@@ -5,6 +5,21 @@
 //   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // // Data needed for first part of the section
+const openingHours = {
+  thu: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -16,31 +31,20 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+  //ES6 enhanced object literals
+  openingHours,
 
   //*Here we destrcture in the function parameters ahead of time
   //!Caution: Make sure names of the parameters are the same as the properties of the object that you are passing into the function
   //!If we're not sure, we can set default values, for good measure - we can also change the name of the passed properties, if we wish
-  orderReceived: function ({ time: t = '00:00', name: n = 'John Doe' }) {
+  orderReceived({ time: t = '00:00', name: n = 'John Doe' }) {
     console.log(
       `${n} just made an order at ${this.name}; his order came in at ${t}`
     );
   },
 
-  orderPasta: function (ingredient1, ingredient2, ingredient3) {
+  //ES6 method declaration
+  orderPasta(ingredient1, ingredient2, ingredient3) {
     console.log(
       `Here's your delicious pasta with ${ingredient1}, ${ingredient2}, and ${ingredient3}!`
     );
@@ -51,6 +55,47 @@ const restaurant = {
     console.log('otherIngredients:', otherIngredients);
   },
 };
+
+// if (restaurant.openingHours && restaurant.openingHours.mon)
+//   console.log(restaurant.openingHours.mon);
+
+// //*With optional chaining - only if mon (?) exists, then .open will be read
+// console.log(restaurant.openingHours?.mon?.open);
+// console.log(restaurant.openingHours.fri?.open);
+
+// const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+// for (let day of days)
+//   console.log(
+//     `On ${day} restaurant is open at hour: ${
+//       restaurant.openingHours?.[day]?.open ?? 'N/A'
+//     }`
+//   );
+
+// //*Optional chaining with methods
+// console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+// console.log(restaurant.orderRissoto?.(0, 1) ?? 'Method does not exist');
+
+// //*Optional chaining with arrays
+// console.log(days[0]?.charAt(0));
+
+//* Returning property keys
+// const properties = Object.keys(openingHours);
+// let openStr = `We are open on ${properties.length} days: `;
+// for (const day of Object.keys(openingHours)) {
+//   openStr += day + ', ';
+// }
+// console.log(openStr);
+
+// //* Returning property values
+// const values = Object.values(openingHours);
+// console.log(Object.entries(values));
+
+// //* Returning object entries
+// console.log(Object.entries(openingHours));
+
+// for (const [day, { open, close }] of Object.entries(openingHours)) {
+//   console.log(`On ${day}, we are open at ${open}, and close at ${close}`);
+// }
 
 // restaurant.orderReceived({
 //   names: 'Jonathan Peral',
@@ -184,8 +229,8 @@ const restaurant = {
 
 // restaurant.orderPasta(...listOfIngredients);
 
-// // //!Since 2018, JS's spread operator supports objects
-// // console.log('restaurant:', { ...restaurant });
+// //!Since 2018, JS's spread operator supports objects
+// console.log('restaurant:', { ...restaurant });
 
 // //! SPREAD because of right-hand side of the assignment operator
 // const arr = [1, 2, ...[3, 4]];
@@ -351,12 +396,83 @@ const restaurant = {
 // team1.odds > team2.odds && console.log('Team2 Wins!');
 // team1.odds > team2.odds || team2.odds > team1.odds || console.log('Draw!');
 
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-//* for-of loop, aka. enhanced for loop
-for (const item of menu) console.log(item);
+// //* for-of loop, aka. enhanced for loop
+// for (const item of menu) console.log(item);
 
-//*destructuring array of values
-for (const [num, item] of menu.entries()) {
-  console.log(`${num + 1}: ${item} is worth so-and-so`);
+// //*destructuring array of values
+// for (const [num, item] of menu.entries()) {
+//   console.log(`${num + 1}: ${item} is worth so-and-so`);
+// }
+
+//? Coding Challenge #2
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+for (const [goal, player] of Object.entries(game.scored)) {
+  console.log(`Goal ${Number(goal) + 1}, was scored by ${player}`);
 }
+
+let sum = 0;
+const { team1, team2 } = game;
+for (let [name, odd] of Object.entries(game.odds)) {
+  console.log({ team1 });
+  sum += Number(odd);
+  if (name == Object.keys({ team1 })) name = team1;
+  else if (name == Object.keys({ team2 })) name = team2;
+  else name = 'draw';
+
+  console.log(`Odd of victory of ${name} is ${odd}`);
+}
+console.log('odd average:', sum / Object.keys(game.odds).length);
+
+const scorers = {};
+for (const player of Object.values(game.scored)) {
+  // console.log([player]);
+  scorers[player] ??= 0;
+  scorers[player]++;
+}
+
+console.log(scorers);
+
+//* Finished Coding Challenge #2
