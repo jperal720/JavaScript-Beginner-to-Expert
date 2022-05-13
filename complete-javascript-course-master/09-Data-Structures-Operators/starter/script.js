@@ -408,94 +408,124 @@ const restaurant = {
 
 //? Coding Challenge #2
 
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
+// const game = {
+//   team1: 'Bayern Munich',
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
 
-for (const [goal, player] of Object.entries(game.scored)) {
-  console.log(`Goal ${Number(goal) + 1}, was scored by ${player}`);
-}
+// for (const [goal, player] of Object.entries(game.scored)) {
+//   console.log(`Goal ${Number(goal) + 1}, was scored by ${player}`);
+// }
 
-let sum = 0;
-const { team1, team2 } = game;
-for (let [name, odd] of Object.entries(game.odds)) {
-  console.log({ team1 });
-  sum += Number(odd);
-  if (name == Object.keys({ team1 })) name = team1;
-  else if (name == Object.keys({ team2 })) name = team2;
-  else name = 'draw';
+// let sum = 0;
+// const { team1, team2 } = game;
+// for (let [name, odd] of Object.entries(game.odds)) {
+//   console.log({ team1 });
+//   sum += Number(odd);
+//   if (name == Object.keys({ team1 })) name = team1;
+//   else if (name == Object.keys({ team2 })) name = team2;
+//   else name = 'draw';
 
-  console.log(`Odd of victory of ${name} is ${odd}`);
-}
-console.log('odd average:', sum / Object.keys(game.odds).length);
+//   console.log(`Odd of victory of ${name} is ${odd}`);
+// }
+// console.log('odd average:', sum / Object.keys(game.odds).length);
 
-const scorers = {};
-for (const player of Object.values(game.scored)) {
-  // console.log([player]);
-  scorers[player] ??= 0;
-  scorers[player]++;
-}
+// const scorers = {};
+// for (const player of Object.values(game.scored)) {
+//   // console.log([player]);
+//   scorers[player] ??= 0;
+//   scorers[player]++;
+// }
 
-console.log(scorers);
+// console.log(scorers);
 
-//* Finished Coding Challenge #2
+// //* Finished Coding Challenge #2
 
-//* Sets
-const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Rissotto', 'Pasta']);
-console.log(ordersSet.size); //Sets are iterables
+// //* Sets
+// const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Rissotto', 'Pasta']);
+// console.log(ordersSet.size); //Sets are iterables
 
-console.log(new Set('Jonas'));
-console.log(ordersSet.has('Bread'));
-ordersSet.add('Garlic Bread');
-ordersSet.delete('Pasta');
-console.log(ordersSet);
+// console.log(new Set('Jonas'));
+// console.log(ordersSet.has('Bread'));
+// ordersSet.add('Garlic Bread');
+// ordersSet.delete('Pasta');
+// console.log(ordersSet);
 
-for (const item of ordersSet) console.log(item);
+// for (const item of ordersSet) console.log(item);
 
-const staff = ['waiter', 'waiter', 'chef', 'manager', 'cook'];
-const staffUnique = [...new Set(staff)]; //!Using the spread keyword to convert from set back to an array - receiving only the unique values of the original array
-console.log(staffUnique);
+// const staff = ['waiter', 'waiter', 'chef', 'manager', 'cook'];
+// const staffUnique = [...new Set(staff)]; //!Using the spread keyword to convert from set back to an array - receiving only the unique values of the original array
+// console.log(staffUnique);
 
-console.log(
-  `This is how many different letters there are in this sentence: ${
-    new Set(`This is how many different letters there are in this sentence: `)
-      .size - 1 //the minus 1 is to account for the space character
-  }`
-);
+// console.log(
+//   `This is how many different letters there are in this sentence: ${
+//     new Set(`This is how many different letters there are in this sentence: `)
+//       .size - 1 //the minus 1 is to account for the space character
+//   }`
+// );
+
+//* Maps
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+rest.set('2', 'Lisbon, Portugal');
+console.log(rest);
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open :)')
+  .set(false, 'We are closed :(');
+
+console.log(rest.get('name'));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 10;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+console.log(rest.delete('2'));
+console.log(rest.size);
+// console.log(rest.clear());
+const arr = [1, 2];
+console.log(rest.set(arr, 'Test'));
+// console.log(rest.get([1, 2]));//!This will not work, creating a different array, and storing it in the heap
+console.log(rest.get(arr)); //*This will work because arr is pointing to the same array in the heap
+
+rest.set(document.querySelector('h1'), 'Heading');
