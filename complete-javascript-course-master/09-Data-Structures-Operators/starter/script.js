@@ -476,3 +476,26 @@ for (const player of Object.values(game.scored)) {
 console.log(scorers);
 
 //* Finished Coding Challenge #2
+
+//* Sets
+const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Rissotto', 'Pasta']);
+console.log(ordersSet.size); //Sets are iterables
+
+console.log(new Set('Jonas'));
+console.log(ordersSet.has('Bread'));
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Pasta');
+console.log(ordersSet);
+
+for (const item of ordersSet) console.log(item);
+
+const staff = ['waiter', 'waiter', 'chef', 'manager', 'cook'];
+const staffUnique = [...new Set(staff)]; //!Using the spread keyword to convert from set back to an array - receiving only the unique values of the original array
+console.log(staffUnique);
+
+console.log(
+  `This is how many different letters there are in this sentence: ${
+    new Set(`This is how many different letters there are in this sentence: `)
+      .size - 1 //the minus 1 is to account for the space character
+  }`
+);
