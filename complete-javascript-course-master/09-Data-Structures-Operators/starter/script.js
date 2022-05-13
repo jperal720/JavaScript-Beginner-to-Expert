@@ -529,3 +529,36 @@ console.log(rest.set(arr, 'Test'));
 console.log(rest.get(arr)); //*This will work because arr is pointing to the same array in the heap
 
 rest.set(document.querySelector('h1'), 'Heading');
+
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'You got it right!'],
+  [false, 'Oops, try again.'],
+]);
+
+console.log(question);
+
+//Convert object to map
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+
+console.log(hoursMap);
+
+// for (let i = 1; i < 4; i++) {
+//   console.log(`Option ${i}: ${question.get(i)}`);
+// }
+
+// console.log(question.get('question'));
+// for (const [key, value] of question) {
+//   if (typeof key == 'number') console.log(`Option ${key}: ${value}`);
+// }
+
+// const answer = prompt('Your answer:');
+// console.log(question.get(answer == question.get('correct')));
+
+//Convert Map to array
+console.log([...question]);
