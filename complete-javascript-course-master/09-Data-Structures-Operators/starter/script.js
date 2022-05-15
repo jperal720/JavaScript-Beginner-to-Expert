@@ -621,3 +621,14 @@ console.log(firstName, lastName);
 
 const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
 console.log(newName);
+
+const capitalizeName = function (name) {
+  let capitalized = '';
+  for (let word of [...name.split(' ')]) {
+    word = word[0].toUpperCase() + word.slice(1);
+    capitalized += word + ' ';
+  }
+  console.log(capitalized);
+};
+
+capitalizeName('Christine ann der Firenze');
