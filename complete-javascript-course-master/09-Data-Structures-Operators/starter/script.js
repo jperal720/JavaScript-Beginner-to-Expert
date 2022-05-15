@@ -582,6 +582,42 @@ const checkMiddleSeat = function (seat) {
     : console.log(`${seat} is not a middle seat`);
   // console.log(s);
 };
+
 checkMiddleSeat('11B');
 //?Strings are primitive types. However, to bypass this, JavaScript -whenever a method on a string is called- it automaticaly converts
 //?those primitive objects into a String object - by using new String();
+const email = 'hello@jonathan.io \n';
+// const lowerEmail = email.toLowerCase();
+// const trimmedEmail = lowerEmail.trim(); //!trim() removes the leading and trailing white spaces in a string
+
+// console.log(lowerEmail, trimmedEmail);
+const normalizedEmail = email.toLowerCase().trim();
+console.log(normalizedEmail);
+
+//replacing parts of a string
+const priceGB = '$288,97';
+const priceUS = priceGB.replace(',', '.');
+console.log(priceUS);
+
+const announcement =
+  'All passengers come to boarding door 23. Boarding door 23!';
+const newAnn = announcement.replaceAll('door', 'gate');
+console.log(newAnn);
+
+console.log(plane);
+console.log(plane.startsWith('AB'));
+const newPlane = 'Airbus 21 8-neo';
+
+newPlane.startsWith('Airbus') && newPlane.endsWith('neo')
+  ? console.log('It is part of that family.')
+  : console.log('It is not part of that family.');
+
+const str = 'a+very+nice+string'.split('+');
+console.log(str);
+
+//*Split and join will be used all of the time!
+const [firstName, lastName] = 'Jonathan Peral'.split(' ');
+console.log(firstName, lastName);
+
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
