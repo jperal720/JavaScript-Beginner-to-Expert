@@ -563,92 +563,143 @@ const restaurant = {
 //Convert Map to array
 // console.log([...question]);
 
-const airline = 'TAP Air Portugal';
-const plane = 'A320';
+// const airline = 'TAP Air Portugal';
+// const plane = 'A320';
 
-console.log(plane[0]);
-console.log(plane[1]);
-console.log(plane[2]);
-console.log(airline.slice(4));
+// console.log(plane[0]);
+// console.log(plane[1]);
+// console.log(plane[2]);
+// console.log(airline.slice(4));
 
-console.log(airline.slice(0, airline.indexOf(' ')));
-console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+// console.log(airline.slice(0, airline.indexOf(' ')));
+// console.log(airline.slice(airline.lastIndexOf(' ') + 1));
 
-const checkMiddleSeat = function (seat) {
-  //B and E are the middle seats
-  const s = seat.slice(-1);
-  s == 'B' || s == 'E'
-    ? console.log(`${seat} is a middle seat`)
-    : console.log(`${seat} is not a middle seat`);
-  // console.log(s);
-};
+// const checkMiddleSeat = function (seat) {
+//   //B and E are the middle seats
+//   const s = seat.slice(-1);
+//   s == 'B' || s == 'E'
+//     ? console.log(`${seat} is a middle seat`)
+//     : console.log(`${seat} is not a middle seat`);
+//   // console.log(s);
+// };
 
-checkMiddleSeat('11B');
-//?Strings are primitive types. However, to bypass this, JavaScript -whenever a method on a string is called- it automaticaly converts
-//?those primitive objects into a String object - by using new String();
-const email = 'hello@jonathan.io \n';
-// const lowerEmail = email.toLowerCase();
-// const trimmedEmail = lowerEmail.trim(); //!trim() removes the leading and trailing white spaces in a string
+// checkMiddleSeat('11B');
+// //?Strings are primitive types. However, to bypass this, JavaScript -whenever a method on a string is called- it automaticaly converts
+// //?those primitive objects into a String object - by using new String();
+// const email = 'hello@jonathan.io \n';
+// // const lowerEmail = email.toLowerCase();
+// // const trimmedEmail = lowerEmail.trim(); //!trim() removes the leading and trailing white spaces in a string
 
-// console.log(lowerEmail, trimmedEmail);
-const normalizedEmail = email.toLowerCase().trim();
-console.log(normalizedEmail);
+// // console.log(lowerEmail, trimmedEmail);
+// const normalizedEmail = email.toLowerCase().trim();
+// console.log(normalizedEmail);
 
-//replacing parts of a string
-const priceGB = '$288,97';
-const priceUS = priceGB.replace(',', '.');
-console.log(priceUS);
+// //replacing parts of a string
+// const priceGB = '$288,97';
+// const priceUS = priceGB.replace(',', '.');
+// console.log(priceUS);
 
-const announcement =
-  'All passengers come to boarding door 23. Boarding door 23!';
-const newAnn = announcement.replaceAll('door', 'gate');
-console.log(newAnn);
+// const announcement =
+//   'All passengers come to boarding door 23. Boarding door 23!';
+// const newAnn = announcement.replaceAll('door', 'gate');
+// console.log(newAnn);
 
-console.log(plane);
-console.log(plane.startsWith('AB'));
-const newPlane = 'Airbus 21 8-neo';
+// console.log(plane);
+// console.log(plane.startsWith('AB'));
+// const newPlane = 'Airbus 21 8-neo';
 
-newPlane.startsWith('Airbus') && newPlane.endsWith('neo')
-  ? console.log('It is part of that family.')
-  : console.log('It is not part of that family.');
+// newPlane.startsWith('Airbus') && newPlane.endsWith('neo')
+//   ? console.log('It is part of that family.')
+//   : console.log('It is not part of that family.');
 
-const str = 'a+very+nice+string'.split('+');
-console.log(str);
+// const str = 'a+very+nice+string'.split('+');
+// console.log(str);
 
-//*Split and join will be used all of the time!
-const [firstName, lastName] = 'Jonathan Peral'.split(' ');
-console.log(firstName, lastName);
+// //*Split and join will be used all of the time!
+// const [firstName, lastName] = 'Jonathan Peral'.split(' ');
+// console.log(firstName, lastName);
 
-const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
-console.log(newName);
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName);
 
-const capitalizeName = function (name) {
-  const names = name.split(' ');
-  let namesUpper = [];
-  for (const n of names) namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+// const capitalizeName = function (name) {
+//   const names = name.split(' ');
+//   let namesUpper = [];
+//   for (const n of names) namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
 
-  // let capitalized = [];
-  // for (let word of [...name.split(' ')]) {
-  //   word = word[0].toUpperCase() + word.slice(1);
-  //   capitalized.push(word);
-  // }
-  // console.log(capitalized.join(' '));
-  namesUpper = namesUpper.join(' ');
-  console.log(namesUpper);
-};
+//   // let capitalized = [];
+//   // for (let word of [...name.split(' ')]) {
+//   //   word = word[0].toUpperCase() + word.slice(1);
+//   //   capitalized.push(word);
+//   // }
+//   // console.log(capitalized.join(' '));
+//   namesUpper = namesUpper.join(' ');
+//   console.log(namesUpper);
+// };
 
-capitalizeName('Christine ann der Firenze');
+// capitalizeName('Christine ann der Firenze');
 
-//String padding
-const message = 'Go to gate 23!';
-console.log(message.padEnd(25, '+'));
+// //String padding
+// const message = 'Go to gate 23!';
+// console.log(message.padEnd(25, '+'));
 
-const maskCreditCard = function (number) {
-  const str = number + '';
-  const masked = str.slice(-4).padStart(str.length, '*');
-  console.log(masked);
-};
+// const maskCreditCard = function (number) {
+//   const str = number + '';
+//   const masked = str.slice(-4).padStart(str.length, '*');
+//   console.log(masked);
+// };
 
-maskCreditCard(2903840923840);
+// maskCreditCard(2903840923840);
 
-//String Repeat
+// //String Repeat
+// const message2 = 'Bad weather... All departures delayed..';
+// console.log(message2.repeat(2));
+
+// const planesInLine = function (n) {
+//   console.log(`There are ${n} planes in line ${'*'.repeat(n)}`);
+// };
+
+// planesInLine(4);
+
+//?Challenge #4
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+// const textBody = document.querySelectorAll('textarea');
+const textBody = document.querySelector('textarea');
+const btn = document.querySelector('button');
+
+btn.addEventListener('click', function () {
+  const vars = textBody.value.split('\n');
+  const normalizedVars = [];
+
+  let maxSize = 0; //greatest found length of variable names
+  for (const v of vars) {
+    //?Original solution
+    // const word =
+    //   v.slice(0, v.indexOf('_')).toLowerCase().trim() +
+    //   v[v.indexOf('_') + 1].toUpperCase() +
+    //   v
+    //     .slice(v.indexOf('_') + 2)
+    //     .toLowerCase()
+    //     .trim();
+
+    //?Refactored version of the previous solution
+    const [first, last] = v.toLowerCase().split('_');
+    const word = `${first.toLowerCase().trim()}${last
+      .replace(last[0], last[0].toUpperCase())
+      .trim()}`;
+    maxSize = maxSize < word.length ? word.length : maxSize;
+    normalizedVars.push(word);
+  }
+
+  let i = 1;
+  console.log(maxSize);
+  for (const word of normalizedVars) {
+    console.log(word.padEnd(maxSize + 5, ' ') + '✅'.repeat(i));
+    i++;
+  }
+});
+
+//Completed Challenge#4
