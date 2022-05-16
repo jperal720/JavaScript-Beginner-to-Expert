@@ -675,7 +675,7 @@ btn.addEventListener('click', function () {
   const normalizedVars = [];
 
   let maxSize = 0; //greatest found length of variable names
-  for (const v of vars) {
+  for (const [i, v] of vars.entries()) {
     //?Original solution
     // const word =
     //   v.slice(0, v.indexOf('_')).toLowerCase().trim() +
@@ -690,16 +690,15 @@ btn.addEventListener('click', function () {
     const word = `${first.toLowerCase().trim()}${last
       .replace(last[0], last[0].toUpperCase())
       .trim()}`;
-    maxSize = maxSize < word.length ? word.length : maxSize;
+    // maxSize = maxSize < word.length ? word.length : maxSize;
     normalizedVars.push(word);
+    console.log(word.padEnd(25, ' ') + '✅'.repeat(i + 1));
   }
-
-  let i = 1;
-  console.log(maxSize);
-  for (const word of normalizedVars) {
-    console.log(word.padEnd(maxSize + 5, ' ') + '✅'.repeat(i));
-    i++;
-  }
+  // let i = 1;
+  // console.log(maxSize);
+  // for (const word of normalizedVars) {
+  //   i++;
+  // }
 });
 
 //Completed Challenge#4
