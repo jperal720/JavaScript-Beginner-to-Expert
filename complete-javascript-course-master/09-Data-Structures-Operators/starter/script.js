@@ -623,12 +623,32 @@ const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
 console.log(newName);
 
 const capitalizeName = function (name) {
-  let capitalized = '';
-  for (let word of [...name.split(' ')]) {
-    word = word[0].toUpperCase() + word.slice(1);
-    capitalized += word + ' ';
-  }
-  console.log(capitalized);
+  const names = name.split(' ');
+  let namesUpper = [];
+  for (const n of names) namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+
+  // let capitalized = [];
+  // for (let word of [...name.split(' ')]) {
+  //   word = word[0].toUpperCase() + word.slice(1);
+  //   capitalized.push(word);
+  // }
+  // console.log(capitalized.join(' '));
+  namesUpper = namesUpper.join(' ');
+  console.log(namesUpper);
 };
 
 capitalizeName('Christine ann der Firenze');
+
+//String padding
+const message = 'Go to gate 23!';
+console.log(message.padEnd(25, '+'));
+
+const maskCreditCard = function (number) {
+  const str = number + '';
+  const masked = str.slice(-4).padStart(str.length, '*');
+  console.log(masked);
+};
+
+maskCreditCard(2903840923840);
+
+//String Repeat
