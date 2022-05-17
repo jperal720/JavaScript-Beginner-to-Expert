@@ -94,6 +94,18 @@
 // console.log(['Jonas', 'Martha', 'Adam'].forEach(oneWord));
 
 //*Function returning functions
-const greet = function (greeting) {
-  return function (name) {};
-};
+// const greet = function (greeting) {
+//   return function (name) {
+//     console.log(`${greeting} ${name}!`);
+//   };
+// };
+
+const greet = greeting => name => console.log(`${greeting} ${name}`);
+
+const greeterHey = greet('Hey');
+
+greeterHey('Jonathan');
+greeterHey('fooh');
+
+greet('Hello')('cuh'); //?Calling the function that returns a function
+//This becomes very important, especially when abiding by functional programming's principles.
