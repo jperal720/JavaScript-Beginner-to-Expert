@@ -100,12 +100,63 @@
 //   };
 // };
 
-const greet = greeting => name => console.log(`${greeting} ${name}`);
+// const greet = greeting => name => console.log(`${greeting} ${name}`);
 
-const greeterHey = greet('Hey');
+// const greeterHey = greet('Hey');
 
-greeterHey('Jonathan');
-greeterHey('fooh');
+// greeterHey('Jonathan');
+// greeterHey('fooh');
 
-greet('Hello')('cuh'); //?Calling the function that returns a function
-//This becomes very important, especially when abiding by functional programming's principles.
+// greet('Hello')('cuh'); //?Calling the function that returns a function
+// //This becomes very important, especially when abiding by functional programming's principles.
+
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, passengerName) {
+    console.log(
+      `${passengerName} booked a seat on ${this.airline}; flight ${this.iataCode} ${flightNum}`
+    );
+
+    this.bookings.push({
+      flight: `${this.iataCode} ${flightNum}`,
+      passengerName,
+    });
+  },
+};
+
+lufthansa.book(239, 'Jonathan Peral Gort');
+lufthansa.book(332, 'Mike Doe');
+console.log(lufthansa.bookings);
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const book = lufthansa.book;
+
+//*Call method
+//Does not Work
+// book(23, 'Sarah Johnes');
+console.log(eurowings);
+book.call(eurowings, 23, 'Sara Johnes');
+
+const swiss = {
+  name: 'Swiss Airlines',
+  iataCode: 'SA',
+  bookings: [],
+};
+
+book.call(swiss, 333, 'Jonas Schmedtmann');
+console.log(swiss);
+
+//* Apply method - it has become obsolete
+const flightData = [545, 'George Cooper'];
+book.apply(swiss, flightData);
+
+//Apply method has become obsolete, because we can just use the 'call' method with the spread (...) keyword
+book.call(swiss, ...flightData);
+console.log(swiss);
