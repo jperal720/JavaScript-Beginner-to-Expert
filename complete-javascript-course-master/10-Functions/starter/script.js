@@ -160,3 +160,17 @@ book.apply(swiss, flightData);
 //Apply method has become obsolete, because we can just use the 'call' method with the spread (...) keyword
 book.call(swiss, ...flightData);
 console.log(swiss);
+
+//* bind method
+
+const bookEW = book.bind(eurowings);
+const bookSA = book.bind(swiss);
+const bookLH = book.bind(lufthansa);
+bookEW(133, 'Steven Williams');
+console.log(eurowings);
+
+const bookEW23 = book.bind(eurowings, 23); //Whenever calling bookEW23, the bind keyword allows us to call this function, applying it to
+//the eurowings object, however, 23 will be a static parameter for flightNum (23) - in this specific case.;
+bookEW23('Yomama');
+bookEW23(403, 'Yomama'); //? this cannot be overriden, 23 is the static argument for this function - in this case, 403 becomes the name of the passenger
+console.log('eurowings:', eurowings);
