@@ -174,3 +174,16 @@ const bookEW23 = book.bind(eurowings, 23); //Whenever calling bookEW23, the bind
 bookEW23('Yomama');
 bookEW23(403, 'Yomama'); //? this cannot be overriden, 23 is the static argument for this function - in this case, 403 becomes the name of the passenger
 console.log('eurowings:', eurowings);
+
+//With Event Listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+
+  this.planes++;
+  console.log(this.planes);
+};
+
+const buyPlaneBtn = document.querySelector('.buy');
+
+buyPlaneBtn.addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
