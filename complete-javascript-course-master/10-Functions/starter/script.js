@@ -110,80 +110,136 @@
 // greet('Hello')('cuh'); //?Calling the function that returns a function
 // //This becomes very important, especially when abiding by functional programming's principles.
 
-const lufthansa = {
-  airline: 'Lufthansa',
-  iataCode: 'LH',
-  bookings: [],
-  book(flightNum, passengerName) {
-    console.log(
-      `${passengerName} booked a seat on ${this.airline}; flight ${this.iataCode} ${flightNum}`
-    );
+// const lufthansa = {
+//   airline: 'Lufthansa',
+//   iataCode: 'LH',
+//   bookings: [],
+//   book(flightNum, passengerName) {
+//     console.log(
+//       `${passengerName} booked a seat on ${this.airline}; flight ${this.iataCode} ${flightNum}`
+//     );
 
-    this.bookings.push({
-      flight: `${this.iataCode} ${flightNum}`,
-      passengerName,
-    });
+//     this.bookings.push({
+//       flight: `${this.iataCode} ${flightNum}`,
+//       passengerName,
+//     });
+//   },
+// };
+
+// lufthansa.book(239, 'Jonathan Peral Gort');
+// lufthansa.book(332, 'Mike Doe');
+// console.log(lufthansa.bookings);
+
+// const eurowings = {
+//   airline: 'Eurowings',
+//   iataCode: 'EW',
+//   bookings: [],
+// };
+
+// const book = lufthansa.book;
+
+// //*Call method
+// //Does not Work
+// // book(23, 'Sarah Johnes');
+// console.log(eurowings);
+// book.call(eurowings, 23, 'Sara Johnes');
+
+// const swiss = {
+//   name: 'Swiss Airlines',
+//   iataCode: 'SA',
+//   bookings: [],
+// };
+
+// book.call(swiss, 333, 'Jonas Schmedtmann');
+// console.log(swiss);
+
+// //* Apply method - it has become obsolete
+// const flightData = [545, 'George Cooper'];
+// book.apply(swiss, flightData);
+
+// //Apply method has become obsolete, because we can just use the 'call' method with the spread (...) keyword
+// book.call(swiss, ...flightData);
+// console.log(swiss);
+
+// //* bind method
+
+// const bookEW = book.bind(eurowings);
+// const bookSA = book.bind(swiss);
+// const bookLH = book.bind(lufthansa);
+// bookEW(133, 'Steven Williams');
+// console.log(eurowings);
+
+// const bookEW23 = book.bind(eurowings, 23); //Whenever calling bookEW23, the bind keyword allows us to call this function, applying it to
+// //the eurowings object, however, 23 will be a static parameter for flightNum (23) - in this specific case.;
+// bookEW23('Yomama');
+// bookEW23(403, 'Yomama'); //? this cannot be overriden, 23 is the static argument for this function - in this case, 403 becomes the name of the passenger
+// console.log('eurowings:', eurowings);
+
+// //With Event Listeners
+// lufthansa.planes = 300;
+// lufthansa.buyPlane = function () {
+//   console.log(this);
+
+//   this.planes++;
+//   console.log(this.planes);
+// };
+
+// const buyPlaneBtn = document.querySelector('.buy');
+
+// buyPlaneBtn.addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+// //Partial application
+// const addTax = (rate, value) => value + value * rate;
+
+// console.log(addTax(0.1, 200));
+
+// const addVAT = addTax.bind(null, 0.23);
+// //! this is essentially what addVAT looks like -> addVAT = value => value + value * 0.23;
+
+// console.log(addVAT(100));
+
+// // const arrowAddVAT = value => () => value + value * 0.23;
+
+// const addTaxRate = rate => value => value + value * rate;
+// const addVATValue = addTaxRate(0.23);
+
+// console.log(addVATValue(100));
+
+//?Challenge #1
+
+const data2 = [1, 5, 3, 9, 6, 1];
+
+const poll = {
+  question: 'What is your favourite programming language?',
+  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+  answers: new Array(4).fill(0),
+
+  registerNewAnswer() {
+    const userInput = prompt(`${this.question}
+    ${this.options[0]}
+    ${this.options[1]}
+    ${this.options[2]}
+    ${this.options[3]}`);
+    if (!(userInput >= 0 && userInput <= 3)) return alert('Invalid answer');
+    this.answers[userInput]++;
+    this.displayResults('string');
+  },
+
+  displayResults(type) {
+    if (!(type == 'array' || type == 'string')) return;
+
+    const isArray = type == 'array' ? true : false;
+    if (isArray) {
+      console.log(this.answers);
+      return;
+    }
+
+    console.log(`Poll results are ${[...this.data2]}`);
   },
 };
 
-lufthansa.book(239, 'Jonathan Peral Gort');
-lufthansa.book(332, 'Mike Doe');
-console.log(lufthansa.bookings);
+document
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));
 
-const eurowings = {
-  airline: 'Eurowings',
-  iataCode: 'EW',
-  bookings: [],
-};
-
-const book = lufthansa.book;
-
-//*Call method
-//Does not Work
-// book(23, 'Sarah Johnes');
-console.log(eurowings);
-book.call(eurowings, 23, 'Sara Johnes');
-
-const swiss = {
-  name: 'Swiss Airlines',
-  iataCode: 'SA',
-  bookings: [],
-};
-
-book.call(swiss, 333, 'Jonas Schmedtmann');
-console.log(swiss);
-
-//* Apply method - it has become obsolete
-const flightData = [545, 'George Cooper'];
-book.apply(swiss, flightData);
-
-//Apply method has become obsolete, because we can just use the 'call' method with the spread (...) keyword
-book.call(swiss, ...flightData);
-console.log(swiss);
-
-//* bind method
-
-const bookEW = book.bind(eurowings);
-const bookSA = book.bind(swiss);
-const bookLH = book.bind(lufthansa);
-bookEW(133, 'Steven Williams');
-console.log(eurowings);
-
-const bookEW23 = book.bind(eurowings, 23); //Whenever calling bookEW23, the bind keyword allows us to call this function, applying it to
-//the eurowings object, however, 23 will be a static parameter for flightNum (23) - in this specific case.;
-bookEW23('Yomama');
-bookEW23(403, 'Yomama'); //? this cannot be overriden, 23 is the static argument for this function - in this case, 403 becomes the name of the passenger
-console.log('eurowings:', eurowings);
-
-//With Event Listeners
-lufthansa.planes = 300;
-lufthansa.buyPlane = function () {
-  console.log(this);
-
-  this.planes++;
-  console.log(this.planes);
-};
-
-const buyPlaneBtn = document.querySelector('.buy');
-
-buyPlaneBtn.addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+//Finished Challenge #1
