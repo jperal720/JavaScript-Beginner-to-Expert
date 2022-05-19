@@ -207,25 +207,21 @@
 
 //?Challenge #1
 
-const data2 = [1, 5, 3, 9, 6, 1];
-
 const poll = {
   question: 'What is your favourite programming language?',
   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
   answers: new Array(4).fill(0),
 
   registerNewAnswer() {
-    const userInput = prompt(`${this.question}
-    ${this.options[0]}
-    ${this.options[1]}
-    ${this.options[2]}
-    ${this.options[3]}`);
+    const userInput = Number(
+      prompt(`${this.question}\n${this.options.join('\n')}`)
+    );
     if (!(userInput >= 0 && userInput <= 3)) return alert('Invalid answer');
     this.answers[userInput]++;
     this.displayResults('string');
   },
 
-  displayResults(type) {
+  displayResults(type = 'array') {
     if (!(type == 'array' || type == 'string')) return;
 
     const isArray = type == 'array' ? true : false;
@@ -234,12 +230,14 @@ const poll = {
       return;
     }
 
-    console.log(`Poll results are ${[...this.data2]}`);
+    console.log(`Poll results are ${[...this.answers]}`);
   },
 };
 
 document
   .querySelector('.poll')
   .addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
 
 //Finished Challenge #1
