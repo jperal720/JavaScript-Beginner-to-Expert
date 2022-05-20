@@ -207,37 +207,86 @@
 
 //?Challenge #1
 
-const poll = {
-  question: 'What is your favourite programming language?',
-  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  answers: new Array(4).fill(0),
+// const poll = {
+//   question: 'What is your favourite programming language?',
+//   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+//   answers: new Array(4).fill(0),
 
-  registerNewAnswer() {
-    const userInput = Number(
-      prompt(`${this.question}\n${this.options.join('\n')}`)
-    );
-    if (!(userInput >= 0 && userInput <= 3)) return alert('Invalid answer');
-    this.answers[userInput]++;
-    this.displayResults('string');
-  },
+//   registerNewAnswer() {
+//     const userInput = Number(
+//       prompt(`${this.question}\n${this.options.join('\n')}`)
+//     );
+//     if (!(userInput >= 0 && userInput <= 3)) return alert('Invalid answer');
+//     this.answers[userInput]++;
+//     this.displayResults('string');
+//   },
 
-  displayResults(type = 'array') {
-    if (!(type == 'array' || type == 'string')) return;
+//   displayResults(type = 'array') {
+//     if (!(type == 'array' || type == 'string')) return;
 
-    const isArray = type == 'array' ? true : false;
-    if (isArray) {
-      console.log(this.answers);
-      return;
-    }
+//     const isArray = type == 'array' ? true : false;
+//     if (isArray) {
+//       console.log(this.answers);
+//       return;
+//     }
 
-    console.log(`Poll results are ${[...this.answers]}`);
-  },
-};
+//     console.log(`Poll results are ${[...this.answers]}`);
+//   },
+// };
 
-document
-  .querySelector('.poll')
-  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+// document
+//   .querySelector('.poll')
+//   .addEventListener('click', poll.registerNewAnswer.bind(poll));
 
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
 
 //Finished Challenge #1
+
+// //* Immidiately Invoked Function Expressions
+
+// const runOnce = function () {
+//   console.log('This will never run ever again');
+// };
+
+// //We could run this function as many times we want
+// // runOnce();
+
+// //IIFE
+// (function () {
+//   console.log('This will never run again');
+//   const isPrivate = 23;
+// })();
+
+// // console.log(isPrivate);
+
+// //Arrow IIFE
+// (() => console.log('This will also never run again'))();
+
+// const secureBooking = function () {
+//   let passengerCount = 0;
+
+//   return function () {
+//     passengerCount++;
+//     console.log(`${passengerCount} passengers`);
+//   };
+// };
+
+// const booker = secureBooking();
+
+// booker();
+// booker();
+// booker();
+
+// console.dir(booker);
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+  let isTrue = true;
+
+  header.addEventListener('click', function () {
+    isTrue ? (header.style.color = 'blue') : (header.style.color = 'red');
+    isTrue = !isTrue;
+    console.log('blue');
+  });
+})();
