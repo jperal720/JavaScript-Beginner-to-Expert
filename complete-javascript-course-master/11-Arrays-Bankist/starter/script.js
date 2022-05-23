@@ -74,3 +74,29 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+let arr = ['a', 'b', 'c', 'd', 'e'];
+console.log(arr.slice(2));
+console.log(arr.slice(2, 4)); //Does not include the 4
+console.log(arr.slice(-2, -1));
+
+//Splice
+// console.log(arr.splice(2)); //!Extracts from the [2] element until the end of the array, from the array
+console.log(arr.splice(-1));
+console.log(arr);
+
+//Reverse
+arr = ['a', 'b', 'c', 'd', 'e'];
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(arr2.reverse()); //Reverse method mutates the original array, much like splice
+console.log(arr2);
+
+//Concat
+const letters = arr.concat(arr2);
+console.log('arr:', arr);
+console.log('arr2:', arr2);
+console.log('letters:', letters);
+console.log('Destructuring both arrays: ', [...arr, ...arr2]);
+
+//Join
+console.log(letters.join(' - ')); //!Join returns a string, with each element separated by the argument (in this case: ' - ')
