@@ -71,7 +71,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -113,3 +113,17 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(arr.at(-1));
 // const name = 'jonathan';
 // console.log(name.at(-1));
+
+//*forEach method
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+for (const [i, move] of movements.entries) {
+  if (move > 0) console.log(`Move ${i + 1}: you deposited ${move}`);
+  else console.log(`Move ${i + 1}: you withdrew ${Math.abs(move)}`);
+}
+
+//* The forEach, passes the element in which we iterate through the array, the index of said element, and the array itself
+movements.forEach(function (move, i, array) {
+  if (move > 0) console.log(`Move ${i + 1}: You deposited ${move}`);
+  else console.log(`Move ${i + 1}: You withdrew ${Math.abs(move)}`);
+});
