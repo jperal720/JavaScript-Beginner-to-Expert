@@ -167,3 +167,25 @@ displayMovements(account1.movements);
 // currenciesUnique.forEach(function (value, _key, map) {
 //   console.log(`${key}: ${value}`);
 // });
+
+//? Challenge #1:
+
+const juliaDogs = [3, 5, 2, 12, 7];
+const kateDogs = [4, 1, 15, 8, 3];
+
+//? Note: Keep in mind that it is bad practice to mutate function parameters
+const checkDogs = function (dogsJulia, dogsKate) {
+  const updatedDogsJulia = [...dogsJulia.slice(1, -2)];
+  const allDogs = updatedDogsJulia.concat(dogsKate);
+  allDogs.forEach(function (age, i) {
+    age >= 3
+      ? console.log(`Dog number ${i + 1} is an adult, and is ${age} years old`)
+      : console.log(
+          `Dog number ${i + 1} is still a puppy, and is ${age} years old`
+        );
+  });
+};
+
+checkDogs(juliaDogs, kateDogs);
+
+//? Challenge #1 completed
