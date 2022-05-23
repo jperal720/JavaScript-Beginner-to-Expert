@@ -65,11 +65,11 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -115,15 +115,35 @@ const currencies = new Map([
 // console.log(name.at(-1));
 
 //*forEach method
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-for (const [i, move] of movements.entries) {
-  if (move > 0) console.log(`Move ${i + 1}: you deposited ${move}`);
-  else console.log(`Move ${i + 1}: you withdrew ${Math.abs(move)}`);
-}
+// for (const [i, move] of movements.entries()) {
+//   if (move > 0) console.log(`Move ${i + 1}: you deposited ${move}`);
+//   else console.log(`Move ${i + 1}: you withdrew ${Math.abs(move)}`);
+// }
 
-//* The forEach, passes the element in which we iterate through the array, the index of said element, and the array itself
-movements.forEach(function (move, i, array) {
-  if (move > 0) console.log(`Move ${i + 1}: You deposited ${move}`);
-  else console.log(`Move ${i + 1}: You withdrew ${Math.abs(move)}`);
+// //* The forEach, passes the element in which we iterate through the array, the index of said element, and the array itself
+// movements.forEach(function (move, i, array) {
+//   if (move > 0) console.log(`Move ${i + 1}: You deposited ${move}`);
+//   else console.log(`Move ${i + 1}: You withdrew ${Math.abs(move)}`);
+// });
+
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+//*The forEach method passes to the callback function - in this order - the value, key, and complete map of each element in the map.
+currencies.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`);
+});
+
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+console.log('currenciesUnique:', currenciesUnique);
+
+//!Although the first 2 params are the same, if the developers would've omitted one,
+//!it would've created confusion amongst developers
+currenciesUnique.forEach(function (value, _key, map) {
+  console.log(`${key}: ${value}`);
 });
