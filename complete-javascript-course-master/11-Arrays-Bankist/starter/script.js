@@ -4,6 +4,14 @@
 /////////////////////////////////////////////////
 // BANKIST APP
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
 // Data
 const account1 = {
   owner: 'Jonas Schmedtmann',
@@ -61,17 +69,29 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = ``;
+
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `
+      <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
+        <div class="movements__date">3 days ago</div>
+        <div class="movements__value">${mov}</div>
+      </div>
+        `;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+displayMovements(account1.movements);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
-
-// const currencies = new Map([
-//   ['USD', 'United States dollar'],
-//   ['EUR', 'Euro'],
-//   ['GBP', 'Pound sterling'],
-// ]);
-
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -128,22 +148,22 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //   else console.log(`Move ${i + 1}: You withdrew ${Math.abs(move)}`);
 // });
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
-//*The forEach method passes to the callback function - in this order - the value, key, and complete map of each element in the map.
-currencies.forEach(function (value, key, map) {
-  console.log(`${key}: ${value}`);
-});
+// //*The forEach method passes to the callback function - in this order - the value, key, and complete map of each element in the map.
+// currencies.forEach(function (value, key, map) {
+//   console.log(`${key}: ${value}`);
+// });
 
-const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
-console.log('currenciesUnique:', currenciesUnique);
+// const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+// console.log('currenciesUnique:', currenciesUnique);
 
-//!Although the first 2 params are the same, if the developers would've omitted one,
-//!it would've created confusion amongst developers
-currenciesUnique.forEach(function (value, _key, map) {
-  console.log(`${key}: ${value}`);
-});
+// //!Although the first 2 params are the same, if the developers would've omitted one,
+// //!it would've created confusion amongst developers
+// currenciesUnique.forEach(function (value, _key, map) {
+//   console.log(`${key}: ${value}`);
+// });
