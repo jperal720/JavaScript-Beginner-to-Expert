@@ -245,14 +245,36 @@ console.log('accounts:', accounts);
 
 //* accumulator -> snowball - will be the last value that we 'reduce' to.
 //* The second parameter of the .reduce method is the initial value of the acc
-const balance = movements.reduce((acc, curr) => (acc += curr), 0);
+// const balance = movements.reduce((acc, curr) => (acc += curr), 0);
 
-console.log(balance);
+// console.log(balance);
 
-//Maximum value of movement array, using reduce
-const maxValue = movements.reduce(
-  (acc, curr) => (acc = acc < curr ? curr : acc),
-  movements[0]
-);
+// //Maximum value of movement array, using reduce
+// //! The .reduce method is the most powerful method of arrays.
+// const maxValue = movements.reduce(
+//   (acc, curr) => (acc = acc < curr ? curr : acc),
+//   movements[0]
+// );
 
-console.log(maxValue);
+// console.log(maxValue);
+
+//? Coding Challenge #2
+
+const calcAverageHumanAge = function (ages) {
+  const humanAges = ages
+    .map(curr => (curr = curr <= 2 ? 2 : 16 + curr * 4))
+    .filter(curr => curr >= 18);
+
+  const avgHumanAges = humanAges.reduce(
+    (acc, curr, undefined, arr) => (acc += curr / arr.length),
+    0
+  );
+  console.log(
+    `The human ages of the dogs are: ${humanAges}.
+    \nAnd the average human ages are: ${avgHumanAges}`
+  );
+};
+
+calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+
+//? Coding Challenge #2 Finished
