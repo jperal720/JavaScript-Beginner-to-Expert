@@ -89,6 +89,13 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const calcPrintBalance = function (movevements) {
+  const balance = movements.reduce((acc, curr) => (acc += curr));
+  labelBalance.textContent = `${balance}€`;
+};
+
+calcPrintBalance(account1.movements);
+
 const createUserNames = function (accs) {
   accs.forEach(function (acc) {
     acc.userName = acc.owner
@@ -230,6 +237,22 @@ console.log('accounts:', accounts);
 
 //!The idea is to return a boolean value, whether the element meets the re-
 //! quirements - i.e. true or false - it is passed unto the new array
-const deposits = movements.filter(mov => mov > 0);
+// const deposits = movements.filter(mov => mov > 0);
+// const withdrawals = movements.filter(mov => mov < 0);
 
-console.log(deposits);
+// console.log(deposits);
+// console.log(withdrawals);
+
+//* accumulator -> snowball - will be the last value that we 'reduce' to.
+//* The second parameter of the .reduce method is the initial value of the acc
+const balance = movements.reduce((acc, curr) => (acc += curr), 0);
+
+console.log(balance);
+
+//Maximum value of movement array, using reduce
+const maxValue = movements.reduce(
+  (acc, curr) => (acc = acc < curr ? curr : acc),
+  movements[0]
+);
+
+console.log(maxValue);
