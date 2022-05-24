@@ -89,6 +89,19 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const createUserNames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.userName = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(n => n[0])
+      .join('');
+  });
+};
+
+createUserNames(accounts);
+console.log('accounts:', accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -190,25 +203,25 @@ displayMovements(account1.movements);
 
 // //? Challenge #1 completed
 
-const eurToUsd = 1.1;
-const moveUsd = movements.map(mov => eurToUsd * mov); //*.map does not mutate arrays
+// const eurToUsd = 1.1;
+// const moveUsd = movements.map(mov => eurToUsd * mov); //*.map does not mutate arrays
 
-console.log(movements);
-console.log(moveUsd);
+// console.log(movements);
+// console.log(moveUsd);
 
-const arrUSD = [];
-for (const move of movements) {
-  arrUSD.push(move * eurToUsd);
-}
+// const arrUSD = [];
+// for (const move of movements) {
+//   arrUSD.push(move * eurToUsd);
+// }
 
-console.log(arrUSD);
+// console.log(arrUSD);
 
-//* The big difference between .map and .forEach is that, map assigns the
-//* returned elements to a new array, and forEach only applies a change to
-//* each element of the object array, without assigning anything
-const strMove = movements.map(function (mov, i) {
-  const type = mov > 0 ? `deposited` : `withdrew`;
-  return `Movement ${i + 1}: You ${type} ${Math.abs(mov)}`;
-});
+// //* The big difference between .map and .forEach is that, map assigns the
+// //* returned elements to a new array, and forEach only applies a change to
+// //* each element of the object array, without assigning anything
+// const strMove = movements.map(function (mov, i) {
+//   const type = mov > 0 ? `deposited` : `withdrew`;
+//   return `Movement ${i + 1}: You ${type} ${Math.abs(mov)}`;
+// });
 
-console.log(strMove);
+// console.log(strMove);
