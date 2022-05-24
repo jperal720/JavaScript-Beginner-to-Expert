@@ -225,3 +225,11 @@ console.log('accounts:', accounts);
 // });
 
 // console.log(strMove);
+
+//Filter
+
+//!The idea is to return a boolean value, whether the element meets the re-
+//! quirements - i.e. true or false - it is passed unto the new array
+const deposits = movements.filter(mov => mov > 0);
+
+console.log(deposits);
