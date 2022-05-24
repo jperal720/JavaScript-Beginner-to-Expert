@@ -168,24 +168,47 @@ displayMovements(account1.movements);
 //   console.log(`${key}: ${value}`);
 // });
 
-//? Challenge #1:
+// //? Challenge #1:
 
-const juliaDogs = [3, 5, 2, 12, 7];
-const kateDogs = [4, 1, 15, 8, 3];
+// const juliaDogs = [3, 5, 2, 12, 7];
+// const kateDogs = [4, 1, 15, 8, 3];
 
-//? Note: Keep in mind that it is bad practice to mutate function parameters
-const checkDogs = function (dogsJulia, dogsKate) {
-  const updatedDogsJulia = [...dogsJulia.slice(1, -2)];
-  const allDogs = updatedDogsJulia.concat(dogsKate);
-  allDogs.forEach(function (age, i) {
-    age >= 3
-      ? console.log(`Dog number ${i + 1} is an adult, and is ${age} years old`)
-      : console.log(
-          `Dog number ${i + 1} is still a puppy, and is ${age} years old`
-        );
-  });
-};
+// //? Note: Keep in mind that it is bad practice to mutate function parameters
+// const checkDogs = function (dogsJulia, dogsKate) {
+//   const updatedDogsJulia = [...dogsJulia.slice(1, -2)];
+//   const allDogs = updatedDogsJulia.concat(dogsKate);
+//   allDogs.forEach(function (age, i) {
+//     age >= 3
+//       ? console.log(`Dog number ${i + 1} is an adult, and is ${age} years old`)
+//       : console.log(
+//           `Dog number ${i + 1} is still a puppy, and is ${age} years old`
+//         );
+//   });
+// };
 
-checkDogs(juliaDogs, kateDogs);
+// checkDogs(juliaDogs, kateDogs);
 
-//? Challenge #1 completed
+// //? Challenge #1 completed
+
+const eurToUsd = 1.1;
+const moveUsd = movements.map(mov => eurToUsd * mov); //*.map does not mutate arrays
+
+console.log(movements);
+console.log(moveUsd);
+
+const arrUSD = [];
+for (const move of movements) {
+  arrUSD.push(move * eurToUsd);
+}
+
+console.log(arrUSD);
+
+//* The big difference between .map and .forEach is that, map assigns the
+//* returned elements to a new array, and forEach only applies a change to
+//* each element of the object array, without assigning anything
+const strMove = movements.map(function (mov, i) {
+  const type = mov > 0 ? `deposited` : `withdrew`;
+  return `Movement ${i + 1}: You ${type} ${Math.abs(mov)}`;
+});
+
+console.log(strMove);
