@@ -81,7 +81,7 @@ const displayMovements = function (movements) {
       i + 1
     } ${type}</div>
         <div class="movements__date">3 days ago</div>
-        <div class="movements__value">${mov}</div>
+        <div class="movements__value">${mov}€</div>
       </div>
         `;
     containerMovements.insertAdjacentHTML('afterbegin', html);
@@ -93,6 +93,30 @@ const calcPrintBalance = function (movevements) {
   const balance = movements.reduce((acc, curr) => (acc += curr));
   labelBalance.textContent = `${balance}€`;
 };
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(map => map > 0)
+    .reduce((acc, i) => acc + i, 0);
+
+  labelSumIn.textContent = `${incomes}€`;
+
+  const expenses = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, i) => acc + i, 0);
+
+  labelSumOut.textContent = `${Math.abs(expenses)}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(mov => mov * 0.012)
+    .filter(mov => mov >= 1)
+    .reduce((acc, mov) => acc + mov, 0);
+
+  labelSumInterest.textContent = `${Math.trunc(interest * 100) / 100}€`; //!Round the value, multiplied by 100, then divided by 100 to round it to 2 decimal places.
+};
+
+calcDisplaySummary(account1.movements);
 
 calcPrintBalance(account1.movements);
 
@@ -210,7 +234,6 @@ console.log('accounts:', accounts);
 
 // //? Challenge #1 completed
 
-// const eurToUsd = 1.1;
 // const moveUsd = movements.map(mov => eurToUsd * mov); //*.map does not mutate arrays
 
 // console.log(movements);
@@ -258,23 +281,36 @@ console.log('accounts:', accounts);
 
 // console.log(maxValue);
 
-//? Coding Challenge #2
+// //? Coding Challenge #2
 
-const calcAverageHumanAge = function (ages) {
-  const humanAges = ages
-    .map(curr => (curr = curr <= 2 ? 2 : 16 + curr * 4))
-    .filter(curr => curr >= 18);
+// const calcAverageHumanAge = function (ages) {
+//   const humanAges = ages
+//     .map(curr => (curr = curr <= 2 ? 2 : 16 + curr * 4))
+//     .filter(curr => curr >= 18);
 
-  const avgHumanAges = humanAges.reduce(
-    (acc, curr, undefined, arr) => (acc += curr / arr.length),
-    0
-  );
-  console.log(
-    `The human ages of the dogs are: ${humanAges}.
-    \nAnd the average human ages are: ${avgHumanAges}`
-  );
-};
+//   const avgHumanAges = humanAges.reduce(
+//     (acc, curr, undefined, arr) => (acc += curr / arr.length),
+//     0
+//   );
+//   console.log(
+//     `The human ages of the dogs are: ${humanAges}.
+//     \nAnd the average human ages are: ${avgHumanAges}`
+//   );
+// };
 
-calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+// calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 
-//? Coding Challenge #2 Finished
+// //? Coding Challenge #2 Finished
+
+const eurToUsd = 1.1;
+
+// pipeline
+const totalDepositUSD = Math.trunc(
+  movements
+    .filter(mov => mov > 0)
+    // .map(mov => mov * eurToUsd)
+    .map((mov, i, arr) => (mov *= eurToUsd)) //We can use the arr arg, to debug.
+    .reduce((acc, i) => (acc += i), 0)
+);
+
+console.log(totalDepositUSD);
