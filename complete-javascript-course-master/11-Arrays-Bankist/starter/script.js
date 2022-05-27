@@ -302,15 +302,36 @@ console.log('accounts:', accounts);
 
 // //? Coding Challenge #2 Finished
 
-const eurToUsd = 1.1;
+// const eurToUsd = 1.1;
 
-// pipeline
-const totalDepositUSD = Math.trunc(
-  movements
-    .filter(mov => mov > 0)
-    // .map(mov => mov * eurToUsd)
-    .map((mov, i, arr) => (mov *= eurToUsd)) //We can use the arr arg, to debug.
-    .reduce((acc, i) => (acc += i), 0)
-);
+// // pipeline
+// const totalDepositUSD = Math.trunc(
+//   movements
+//     .filter(mov => mov > 0)
+//     // .map(mov => mov * eurToUsd)
+//     .map((mov, i, arr) => (mov *= eurToUsd)) //We can use the arr arg, to debug.
+//     .reduce((acc, i) => (acc += i), 0)
+// );
 
-console.log(totalDepositUSD);
+// console.log(totalDepositUSD);
+
+// //*Note: It is bad practice in JS to chain methods that mutate the original variable, like the .splice or .reverse method.;
+
+//?Coding Challenge #3
+
+const calcAverageHumanAge = function (ages) {
+  const humanAges = ages
+    .map(curr => (curr = curr <= 2 ? 2 : 16 + curr * 4))
+    .filter(curr => curr >= 18);
+
+  const avgHumanAges = humanAges.reduce(
+    (acc, curr, undefined, arr) => (acc += curr / arr.length),
+    0
+  );
+  console.log(
+    `The human ages of the dogs are: ${humanAges}.
+    \nAnd the average human ages are: ${avgHumanAges}`
+  );
+};
+
+//?Finished Challenge #3
