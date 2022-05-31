@@ -69,7 +69,8 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
+const displayMovements = function (acc) {
+  const movements = acc.movements;
   containerMovements.innerHTML = ``;
 
   movements.forEach(function (mov, i) {
@@ -88,8 +89,10 @@ const displayMovements = function (movements) {
   });
 };
 
-const calcPrintBalance = function (movements) {
+const calcPrintBalance = function (acc) {
+  const movements = acc.movements;
   const balance = movements.reduce((acc, curr) => (acc += curr));
+  acc.balance = balance;
   labelBalance.textContent = `${balance}€`;
 };
 
@@ -129,12 +132,24 @@ const createUserNames = function (accs) {
 
 createUserNames(accounts);
 
+const updateUI = function () {
+  //Display Movements
+  displayMovements(currentAccount);
+
+  //Display Summary
+  calcDisplaySummary(currentAccount);
+
+  //Display Balance
+  calcPrintBalance(currentAccount);
+};
+
 // Event Handler
 let currentAccount;
 
 btnLogin.addEventListener('click', function (event) {
   //Prevent form from submitting
   event.preventDefault();
+  //Note: .find is especially powerful when we are looking for objects with unique values
   currentAccount = accounts.find(
     acc => acc.userName == inputLoginUsername.value
   );
@@ -150,14 +165,38 @@ btnLogin.addEventListener('click', function (event) {
     }!`;
     containerApp.style.opacity = 100;
 
-    //Display Movements
-    displayMovements(currentAccount.movements);
+    //Displaying UI
+    updateUI();
+  }
+});
 
-    //Display Summary
-    calcDisplaySummary(currentAccount);
+btnTransfer.addEventListener('click', function (event) {
+  event.preventDefault();
 
-    //Display Balance
-    calcPrintBalance(currentAccount.movements);
+  const currentAmount = currentAccount.balance;
+  const transferAmount =
+    Number(inputTransferAmount.value) > 0 &&
+    Number(inputTransferAmount.value <= currentAmount)
+      ? Number(inputTransferAmount.value)
+      : undefined;
+  const transferToAcc = accounts.find(
+    acc => acc.userName == inputTransferTo.value
+  );
+
+  if (
+    transferToAcc &&
+    transferAmount &&
+    transferToAcc?.userName !== currentAccount.userName
+  ) {
+    //Pushing negative movement on current Account
+    currentAccount.movements.push(transferAmount * -1);
+
+    //Pushing positive movement on receiver Account
+    transferToAcc.movements.push(transferAmount);
+
+    //Updating UI
+    //Todo: Make this linear; instead of displaying all of the already displayed movements; also, display proper time of action
+    updateUI();
   }
 });
 
