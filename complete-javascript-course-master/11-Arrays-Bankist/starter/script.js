@@ -211,7 +211,7 @@ btnClose.addEventListener('click', function (event) {
   //inputClosePin
 
   const closeUsername = inputCloseUsername.value;
-  const closePin = inputClosePin.value;
+  const closePin = Number(inputClosePin.value);
   const confirmedAccount =
     currentAccount.userName == closeUsername && currentAccount.pin == closePin
       ? true
@@ -221,11 +221,12 @@ btnClose.addEventListener('click', function (event) {
   if (confirmedAccount) {
     console.log('closing account');
     //Removing account from accounts array
-    const accIndex = accounts.findIndex(acc => acc == currentAccount);
+    const accIndex = accounts.findIndex(
+      acc => acc.userName == currentAccount.userName
+    );
     console.log(accIndex);
 
     accounts.splice(accIndex, 1);
-    console.log(accounts);
 
     //Removing UI
     containerApp.style.opacity = 0;
@@ -452,3 +453,10 @@ btnClose.addEventListener('click', function (event) {
 
 // const account = accounts.find(acc => acc.owner == 'Jessica Davis');
 // console.log(account);
+
+// console.log(movements);
+// //Use includes to test if an array includes a certain value
+// console.log(movements.includes(-130));
+
+// //.some method allows us to check if a certain condition is met in an array
+// console.log(movements.some(mov => mov > 5000));
