@@ -87,14 +87,15 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-displayMovements(account1.movements);
 
-const calcPrintBalance = function (movevements) {
+const calcPrintBalance = function (movements) {
   const balance = movements.reduce((acc, curr) => (acc += curr));
   labelBalance.textContent = `${balance}€`;
 };
 
-const calcDisplaySummary = function (movements) {
+const calcDisplaySummary = function (acc) {
+  const movements = acc.movements;
+  const interestRate = acc.interestRate;
   const incomes = movements
     .filter(map => map > 0)
     .reduce((acc, i) => acc + i, 0);
@@ -109,16 +110,12 @@ const calcDisplaySummary = function (movements) {
 
   const interest = movements
     .filter(mov => mov > 0)
-    .map(mov => mov * 0.012)
+    .map(mov => mov * (interestRate / 100))
     .filter(mov => mov >= 1)
     .reduce((acc, mov) => acc + mov, 0);
 
   labelSumInterest.textContent = `${Math.trunc(interest * 100) / 100}€`; //!Round the value, multiplied by 100, then divided by 100 to round it to 2 decimal places.
 };
-
-calcDisplaySummary(account1.movements);
-
-calcPrintBalance(account1.movements);
 
 const createUserNames = function (accs) {
   accs.forEach(function (acc) {
@@ -131,7 +128,38 @@ const createUserNames = function (accs) {
 };
 
 createUserNames(accounts);
-console.log('accounts:', accounts);
+
+// Event Handler
+let currentAccount;
+
+btnLogin.addEventListener('click', function (event) {
+  //Prevent form from submitting
+  event.preventDefault();
+  currentAccount = accounts.find(
+    acc => acc.userName == inputLoginUsername.value
+  );
+
+  if (inputLoginPin?.value == Number(currentAccount?.pin)) {
+    //Clearing input text content
+    inputLoginUsername.value = inputLoginPin.value = ``; //? Assignment operator works from right-to-left
+    inputLoginPin.blur();
+
+    //Display UI and welcome message
+    labelWelcome.textContent = `Welcome, ${
+      currentAccount.owner.split(' ')[0]
+    }!`;
+    containerApp.style.opacity = 100;
+
+    //Display Movements
+    displayMovements(currentAccount.movements);
+
+    //Display Summary
+    calcDisplaySummary(currentAccount);
+
+    //Display Balance
+    calcPrintBalance(currentAccount.movements);
+  }
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -241,7 +269,7 @@ console.log('accounts:', accounts);
 
 // const arrUSD = [];
 // for (const move of movements) {
-//   arrUSD.push(move * eurToUsd);
+//   arrUSD.pu (move * eurToUsd);
 // }
 
 // console.log(arrUSD);
@@ -337,11 +365,11 @@ console.log('accounts:', accounts);
 // //?Finished Challenge #3!
 
 //!Using the .find method to acquire the first withdrawal
-const firstWith = movements.find(mov => mov < 0); //Will return the first element in the array that satisfies the condition of the callback function
+// const firstWith = movements.find(mov => mov < 0); //Will return the first element in the array that satisfies the condition of the callback function
 
-console.log(firstWith);
+// console.log(firstWith);
 
-console.log(accounts);
+// console.log(accounts);
 
-const account = accounts.find(acc => acc.owner == 'Jessica Davis');
-console.log(account);
+// const account = accounts.find(acc => acc.owner == 'Jessica Davis');
+// console.log(account);
