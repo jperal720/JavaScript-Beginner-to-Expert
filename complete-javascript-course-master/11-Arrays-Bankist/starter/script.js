@@ -319,19 +319,29 @@ console.log('accounts:', accounts);
 
 //?Coding Challenge #3
 
-const calcAverageHumanAge = function (ages) {
-  const humanAges = ages
-    .map(curr => (curr = curr <= 2 ? 2 : 16 + curr * 4))
-    .filter(curr => curr >= 18);
+// const calcAverageHumanAge = function (ages) {
+//   const humanAges = ages
+//     .map(curr => (curr = curr <= 2 ? 2 : 16 + curr * 4))
+//     .filter(curr => curr >= 18);
 
-  const avgHumanAges = humanAges.reduce(
-    (acc, curr, undefined, arr) => (acc += curr / arr.length),
-    0
-  );
-  console.log(
-    `The human ages of the dogs are: ${humanAges}.
-    \nAnd the average human ages are: ${avgHumanAges}`
-  );
-};
+//   const avgHumanAges = humanAges.reduce(
+//     (acc, curr, undefined, arr) => (acc += curr / arr.length),
+//     0
+//   );
+//   console.log(
+//     `The human ages of the dogs are: ${humanAges}.
+//     \nAnd the average human ages are: ${avgHumanAges}`
+//   );
+// };
 
-//?Finished Challenge #3!
+// //?Finished Challenge #3!
+
+//!Using the .find method to acquire the first withdrawal
+const firstWith = movements.find(mov => mov < 0); //Will return the first element in the array that satisfies the condition of the callback function
+
+console.log(firstWith);
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner == 'Jessica Davis');
+console.log(account);
