@@ -132,15 +132,15 @@ const createUserNames = function (accs) {
 
 createUserNames(accounts);
 
-const updateUI = function () {
+const updateUI = function (acc) {
   //Display Movements
-  displayMovements(currentAccount);
+  displayMovements(acc);
 
   //Display Summary
-  calcDisplaySummary(currentAccount);
+  calcDisplaySummary(acc);
 
   //Display Balance
-  calcPrintBalance(currentAccount);
+  calcPrintBalance(acc);
 };
 
 // Event Handler
@@ -166,7 +166,7 @@ btnLogin.addEventListener('click', function (event) {
     containerApp.style.opacity = 100;
 
     //Displaying UI
-    updateUI();
+    updateUI(currentAccount);
   }
 });
 
@@ -196,8 +196,13 @@ btnTransfer.addEventListener('click', function (event) {
 
     //Updating UI
     //Todo: Make this linear; instead of displaying all of the already displayed movements; also, display proper time of action
-    updateUI();
+    updateUI(currentAccount);
   }
+
+  //Cleaning the input fields
+  inputTransferTo.blur();
+  inputTransferAmount.blur();
+  inputTransferTo.value = inputTransferAmount.value = ``;
 });
 
 /////////////////////////////////////////////////
