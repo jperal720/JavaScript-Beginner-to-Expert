@@ -497,5 +497,8 @@ console.log(accountMovements);
 accountMovements = accounts.flatMap(acc => acc.movements, 1);
 console.log(accountMovements);
 
-const overallBalance = accountMovements.reduce((acc, mov) => (acc += mov));
+const overallBalance = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => (acc += mov));
+
 console.log(overallBalance);
