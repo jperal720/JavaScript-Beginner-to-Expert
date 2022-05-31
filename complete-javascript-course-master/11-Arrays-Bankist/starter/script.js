@@ -241,6 +241,27 @@ btnClose.addEventListener('click', function (event) {
   inputCloseUsername.value = inputClosePin.value = ``;
 });
 
+btnLoan.addEventListener('click', function (event) {
+  event.preventDefault();
+  const loanAmount = Math.abs(Number(inputLoanAmount.value));
+
+  //*Checks whether user meets the requirement for loan
+  //?req: any deposit > 10% of request
+  const requirement = currentAccount.movements.some(
+    mov => mov > loanAmount * 0.1
+  );
+
+  console.log(requirement);
+  requirement && console.log(currentAccount.movements.push(loanAmount));
+
+  //Update UI
+  updateUI(currentAccount);
+
+  //Clearing input fields
+  inputLoanAmount.blur();
+  inputLoanAmount.value = ``;
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -454,9 +475,4 @@ btnClose.addEventListener('click', function (event) {
 // const account = accounts.find(acc => acc.owner == 'Jessica Davis');
 // console.log(account);
 
-// console.log(movements);
-// //Use includes to test if an array includes a certain value
-// console.log(movements.includes(-130));
-
-// //.some method allows us to check if a certain condition is met in an array
-// console.log(movements.some(mov => mov > 5000));
+//
