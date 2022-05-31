@@ -243,12 +243,21 @@ btnClose.addEventListener('click', function (event) {
 
 btnLoan.addEventListener('click', function (event) {
   event.preventDefault();
-  const loanAmount = Math.abs(Number(inputLoanAmount.value));
+  const loanAmount =
+    Number(inputLoanAmount.value) > 0
+      ? Number(inputLoanAmount.value)
+      : undefined;
+
+  //Clearing input fields
+  inputLoanAmount.blur();
+  inputLoanAmount.value = ``;
+
+  if (!loanAmount) return;
 
   //*Checks whether user meets the requirement for loan
   //?req: any deposit > 10% of request
   const requirement = currentAccount.movements.some(
-    mov => mov > loanAmount * 0.1
+    mov => mov >= loanAmount * 0.1
   );
 
   console.log(requirement);
@@ -256,27 +265,11 @@ btnLoan.addEventListener('click', function (event) {
 
   //Update UI
   updateUI(currentAccount);
-
-  //Clearing input fields
-  inputLoanAmount.blur();
-  inputLoanAmount.value = ``;
 });
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
-
-/////////////////////////////////////////////////
-
-// let arr = ['a', 'b', 'c', 'd', 'e'];
-// console.log(arr.slice(2));
-// console.log(arr.slice(2, 4)); //Does not include the 4
-// console.log(arr.slice(-2, -1));
-
-// //Splice
-// // console.log(arr.splice(2)); //!Extracts from the [2] element until the end of the array, from the array
-// console.log(arr.splice(-1));
-// console.log(arr);
 
 // //Reverse
 // arr = ['a', 'b', 'c', 'd', 'e'];
@@ -475,4 +468,6 @@ btnLoan.addEventListener('click', function (event) {
 // const account = accounts.find(acc => acc.owner == 'Jessica Davis');
 // console.log(account);
 
-//
+//Every returns true if all of the elements in an array meet a condition
+
+console.log(accounts[3].movements.every(mov => mov > 0));
