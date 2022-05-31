@@ -195,7 +195,7 @@ btnTransfer.addEventListener('click', function (event) {
     transferToAcc.movements.push(transferAmount);
 
     //Updating UI
-    //Todo: Make this linear; instead of displaying all of the already displayed movements; also, display proper time of action
+    //Todo: Make this line ar; instead of displaying all of the already displayed movements; also, display proper time of action
     updateUI(currentAccount);
   }
 
@@ -203,6 +203,41 @@ btnTransfer.addEventListener('click', function (event) {
   inputTransferTo.blur();
   inputTransferAmount.blur();
   inputTransferTo.value = inputTransferAmount.value = ``;
+});
+
+btnClose.addEventListener('click', function (event) {
+  event.preventDefault();
+  //inputCloseUsername
+  //inputClosePin
+
+  const closeUsername = inputCloseUsername.value;
+  const closePin = inputClosePin.value;
+  const confirmedAccount =
+    currentAccount.userName == closeUsername && currentAccount.pin == closePin
+      ? true
+      : false;
+
+  //Closing the account
+  if (confirmedAccount) {
+    console.log('closing account');
+    //Removing account from accounts array
+    const accIndex = accounts.findIndex(acc => acc == currentAccount);
+    console.log(accIndex);
+
+    accounts.splice(accIndex, 1);
+    console.log(accounts);
+
+    //Removing UI
+    containerApp.style.opacity = 0;
+
+    //Display Welcome message
+    labelWelcome.textContent = `Log in to get started`;
+  }
+
+  //Clearing input fields
+  inputCloseUsername.blur();
+  inputClosePin.blur();
+  inputCloseUsername.value = inputClosePin.value = ``;
 });
 
 /////////////////////////////////////////////////
