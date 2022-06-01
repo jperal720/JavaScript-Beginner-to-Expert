@@ -69,11 +69,11 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (acc, sort = false) {
-  console.log(acc.movements.slice());
-  const movements = sort
-    ? acc.movements.slice().sort((a, b) => (a < b ? 1 : -1))
+const displayMovements = function (acc, sorted = false) {
+  const movements = sorted
+    ? acc.movements.slice().sort((a, b) => (a > b ? 1 : -1))
     : acc.movements;
+
   containerMovements.innerHTML = ``;
 
   movements.forEach(function (mov, i) {
@@ -135,9 +135,9 @@ const createUserNames = function (accs) {
 
 createUserNames(accounts);
 
-const updateUI = function (acc) {
+const updateUI = function (acc, sorted = false) {
   //Display Movements
-  displayMovements(acc);
+  displayMovements(acc, sorted);
 
   //Display Summary
   calcDisplaySummary(acc);
@@ -176,7 +176,7 @@ btnLogin.addEventListener('click', function (event) {
 btnTransfer.addEventListener('click', function (event) {
   event.preventDefault();
 
-  const currentAmount = currentAccount.balance;
+  const currentAmount = currentAccount?.balance;
   const transferAmount =
     Number(inputTransferAmount.value) > 0 &&
     Number(inputTransferAmount.value <= currentAmount)
@@ -274,12 +274,9 @@ let sorted = false;
 
 btnSort.addEventListener('click', function (event) {
   event.preventDefault();
-  sorted = sorted ? false : true;
-  //Sort or display normal movements
-  displayMovements(currentAccount.movements, sorted);
-
-  //Update UI
-  updateUI(currentAccount);
+  sorted = !sorted;
+  //Sort/return to normal, and Update UI
+  updateUI(currentAccount, sorted);
 });
 
 /////////////////////////////////////////////////
