@@ -579,16 +579,6 @@ const dogs = [
   { weight: 32, curFood: 340, owners: ['Michael'] },
 ];
 
-//1.
-dogs.forEach(
-  curr =>
-    (curr.recommendedFood = Math.trunc(curr.weight ** 0.75 * 28 * 100) / 100)
-);
-
-//2.
-const sarahDog = dogs.find(curr => curr.owners.includes('Sarah'));
-console.log('sarahDog:', sarahDog);
-
 const isEatingRight = function (currFood, recommended) {
   return currFood < recommended * 1.1 && currFood > recommended * 0.9
     ? true
@@ -603,42 +593,56 @@ const isEatingTooMuch = function (currFood, recommended) {
   return currFood > recommended * 1.1 ? true : false;
 };
 
+//1.
+dogs.forEach(
+  curr =>
+    (curr.recommendedFood = Math.trunc(curr.weight ** 0.75 * 28 * 100) / 100)
+);
+
+//2.
+const sarahDog = dogs.find(curr => curr.owners.includes('Sarah'));
+console.log('sarahDog:', sarahDog);
+
 if (isEatingRight(sarahDog.curFood, sarahDog.recommendedFood))
   console.log(`Sarah's dog is eating okay!`);
 else if (isEatingTooLittle(sarahDog.curFood, sarahDog.recommendedFood))
   console.log(`Sarah's dog is eating too little!`);
 else console.log(`Sarah's dog is eating too much!`);
 
+//3.
 const ownersEatTooMuch = dogs
   .filter(curr => isEatingTooMuch(curr.curFood, curr.recommendedFood))
-  .map(curr => curr.owners);
+  .flatMap(curr => curr.owners);
 const ownersEatTooLittle = dogs
   .filter(curr => isEatingTooLittle(curr.curFood, curr.recommendedFood))
-  .map(curr => curr.owners);
+  .flatMap(curr => curr.owners);
 
+//4.
 console.log(
-  `${ownersEatTooLittle
-    .join()
-    .replaceAll(',', ' and ')}'s dogs eat too little,\n${ownersEatTooMuch
-    .join(',')
-    .replaceAll(',', ' and ')}'s dogs eat too much`
+  `${ownersEatTooLittle.join(
+    ' and '
+  )}'s dogs eat too little,\n${ownersEatTooMuch.join(
+    ' and '
+  )}'s dogs eat too much`
 );
-console.log(ownersEatTooLittle.join().replace(',', ' and '));
-console.log(dogs);
 
+//5.
 //Checks whether there's any dog eating the exact recommended amount
 console.log(dogs.some(curr => curr.curFood === curr.recommendedFood));
 
+//6.
 //Checks whether there's any dog eating in the recommended range
 console.log(
   dogs.some(curr => isEatingRight(curr.curFood, curr.recommendedFood))
 );
 
+//7.
 const dogsEatingOkay = dogs.filter(curr =>
   isEatingRight(curr.curFood, curr.recommendedFood)
 );
 console.log('dogsEatingOkay:', dogsEatingOkay);
 
+//8.
 const dogsSorted = dogs
   .slice()
   .sort((a, b) => (a.recommendedFood > b.recommendedFood ? 1 : -1));
