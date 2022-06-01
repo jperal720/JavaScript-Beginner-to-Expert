@@ -526,3 +526,46 @@ btnSort.addEventListener('click', function (event) {
 // //return < 0, a, b
 // //return > 0, b, a
 // console.log(movements.sort((a, b) => (a > b ? 1 : -1)));
+
+//When using the Array object constructor, only the .fill() method can be used
+const oldArr = [1, 4, 6, 3030, 383, 48];
+const arr = new Array(7);
+//* Can take up to 3 args; and it's much like slice()
+//* First argument is the value which we are going to "fill"
+//* Second is the starting argument - index of which we will start to fill -
+//* and third is the ending argument for filling- inclusive.
+arr.fill(1, 4, 6);
+console.log(arr);
+
+console.log(oldArr.fill(23, 0, 2));
+
+//Array.from()
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from(
+  { length: 7 },
+  (_ /*throwaway param*/, index) => (index += 1)
+);
+console.log(z);
+
+const randomDiceRolls = Array.from({ length: 100 }, () =>
+  Math.trunc(Math.random() * 6 + 1)
+);
+console.log(randomDiceRolls);
+
+labelBalance.addEventListener('click', function () {
+  //*the second argument of .from() Array object method functions as a .map() callback function
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    curr => curr.textContent.replace('€', '')
+  );
+
+  console.log(movementsUI);
+
+  //?Variance of the above - with destructuring:
+  const movementsUI2 = [...document.querySelectorAll('.movements__value')].map(
+    curr => curr.textContent.replace('€', '')
+  );
+  console.log(movementsUI2);
+});
