@@ -69,8 +69,11 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (acc) {
-  const movements = acc.movements;
+const displayMovements = function (acc, sort = false) {
+  console.log(acc.movements.slice());
+  const movements = sort
+    ? acc.movements.slice().sort((a, b) => (a < b ? 1 : -1))
+    : acc.movements;
   containerMovements.innerHTML = ``;
 
   movements.forEach(function (mov, i) {
@@ -262,6 +265,18 @@ btnLoan.addEventListener('click', function (event) {
 
   console.log(requirement);
   requirement && console.log(currentAccount.movements.push(loanAmount));
+
+  //Update UI
+  updateUI(currentAccount);
+});
+
+let sorted = false;
+
+btnSort.addEventListener('click', function (event) {
+  event.preventDefault();
+  sorted = sorted ? false : true;
+  //Sort or display normal movements
+  displayMovements(currentAccount.movements, sorted);
 
   //Update UI
   updateUI(currentAccount);
@@ -470,35 +485,47 @@ btnLoan.addEventListener('click', function (event) {
 
 //Every returns true if all of the elements in an array meet a condition
 
-console.log(accounts[3].movements.every(mov => mov > 0));
+// console.log(accounts[3].movements.every(mov => mov > 0));
 
-const arr = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-];
+// const arr = [
+//   [1, 2, 3],
+//   [4, 5, 6],
+//   [7, 8, 9],
+// ];
 
-const arrDeep = [
-  [[1, 2], 3],
-  [4, 5, 6],
-  [7, [8, 9]],
-];
+// const arrDeep = [
+//   [[1, 2], 3],
+//   [4, 5, 6],
+//   [7, [8, 9]],
+// ];
 
-console.log(arr.flat()); //This works
-console.log(arrDeep.flat()); //However, the .flat() method only goes one level deep by default
-console.log(arrDeep.flat(2)); //we can specify the level of depth that we want it to flatten out
+// console.log(arr.flat()); //This works
+// console.log(arrDeep.flat()); //However, the .flat() method only goes one level deep by default
+// console.log(arrDeep.flat(2)); //we can specify the level of depth that we want it to flatten out
 
-let accountMovements = accounts.map(acc => acc.movements);
-console.log(accountMovements);
+// let accountMovements = accounts.map(acc => acc.movements);
+// console.log(accountMovements);
 
-//*Maps values into the array, then flattens it
-//?Note: .flatMap() method takes in argument for level of depth of flattening
+// //*Maps values into the array, then flattens it
+// //?Note: .flatMap() method takes in argument for level of depth of flattening
 
-accountMovements = accounts.flatMap(acc => acc.movements, 1);
-console.log(accountMovements);
+// accountMovements = accounts.flatMap(acc => acc.movements);
+// console.log(accountMovements);
 
-const overallBalance = accounts
-  .flatMap(acc => acc.movements)
-  .reduce((acc, mov) => (acc += mov));
+// const overallBalance = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce((acc, mov) => (acc += mov));
 
-console.log(overallBalance);
+// console.log(overallBalance);
+
+// const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+
+// console.log(owners.sort()); //!.sort() method mutates arrays
+
+// //Numbers
+// console.log(movements);
+// // console.log(movements.sort());
+
+// //return < 0, a, b
+// //return > 0, b, a
+// console.log(movements.sort((a, b) => (a > b ? 1 : -1)));
