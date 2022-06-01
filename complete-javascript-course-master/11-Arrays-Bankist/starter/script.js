@@ -528,44 +528,120 @@ btnSort.addEventListener('click', function (event) {
 // console.log(movements.sort((a, b) => (a > b ? 1 : -1)));
 
 //When using the Array object constructor, only the .fill() method can be used
-const oldArr = [1, 4, 6, 3030, 383, 48];
-const arr = new Array(7);
-//* Can take up to 3 args; and it's much like slice()
-//* First argument is the value which we are going to "fill"
-//* Second is the starting argument - index of which we will start to fill -
-//* and third is the ending argument for filling- inclusive.
-arr.fill(1, 4, 6);
-console.log(arr);
+// const oldArr = [1, 4, 6, 3030, 383, 48];
+// const arr = new Array(7);
+// //* Can take up to 3 args; and it's much like slice()
+// //* First argument is the value which we are going to "fill"
+// //* Second is the starting argument - index of which we will start to fill -
+// //* and third is the ending argument for filling- inclusive.
+// arr.fill(1, 4, 6);
+// console.log(arr);
 
-console.log(oldArr.fill(23, 0, 2));
+// console.log(oldArr.fill(23, 0, 2));
 
-//Array.from()
-const y = Array.from({ length: 7 }, () => 1);
-console.log(y);
+// //Array.from()
+// const y = Array.from({ length: 7 }, () => 1);
+// console.log(y);
 
-const z = Array.from(
-  { length: 7 },
-  (_ /*throwaway param*/, index) => (index += 1)
+// const z = Array.from(
+//   { length: 7 },
+//   (_ /*throwaway param*/, index) => (index += 1)
+// );
+// console.log(z);
+
+// const randomDiceRolls = Array.from({ length: 100 }, () =>
+//   Math.trunc(Math.random() * 6 + 1)
+// );
+// console.log(randomDiceRolls);
+
+// labelBalance.addEventListener('click', function () {
+//   //*the second argument of .from() Array object method functions as a .map() callback function
+//   const movementsUI = Array.from(
+//     document.querySelectorAll('.movements__value'),
+//     curr => curr.textContent.replace('€', '')
+//   );
+
+//   console.log(movementsUI);
+
+//   //?Variance of the above - with destructuring:
+//   const movementsUI2 = [...document.querySelectorAll('.movements__value')].map(
+//     curr => curr.textContent.replace('€', '')
+//   );
+//   console.log(movementsUI2);
+// });
+
+//? Challenge #4:
+
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+//1.
+dogs.forEach(
+  curr =>
+    (curr.recommendedFood = Math.trunc(curr.weight ** 0.75 * 28 * 100) / 100)
 );
-console.log(z);
 
-const randomDiceRolls = Array.from({ length: 100 }, () =>
-  Math.trunc(Math.random() * 6 + 1)
+//2.
+const sarahDog = dogs.find(curr => curr.owners.includes('Sarah'));
+console.log('sarahDog:', sarahDog);
+
+const isEatingRight = function (currFood, recommended) {
+  return currFood < recommended * 1.1 && currFood > recommended * 0.9
+    ? true
+    : false;
+};
+
+const isEatingTooLittle = function (currFood, recommended) {
+  return currFood < recommended * 0.9 ? true : false;
+};
+
+const isEatingTooMuch = function (currFood, recommended) {
+  return currFood > recommended * 1.1 ? true : false;
+};
+
+if (isEatingRight(sarahDog.curFood, sarahDog.recommendedFood))
+  console.log(`Sarah's dog is eating okay!`);
+else if (isEatingTooLittle(sarahDog.curFood, sarahDog.recommendedFood))
+  console.log(`Sarah's dog is eating too little!`);
+else console.log(`Sarah's dog is eating too much!`);
+
+const ownersEatTooMuch = dogs
+  .filter(curr => isEatingTooMuch(curr.curFood, curr.recommendedFood))
+  .map(curr => curr.owners);
+const ownersEatTooLittle = dogs
+  .filter(curr => isEatingTooLittle(curr.curFood, curr.recommendedFood))
+  .map(curr => curr.owners);
+
+console.log(
+  `${ownersEatTooLittle
+    .join()
+    .replaceAll(',', ' and ')}'s dogs eat too little,\n${ownersEatTooMuch
+    .join(',')
+    .replaceAll(',', ' and ')}'s dogs eat too much`
 );
-console.log(randomDiceRolls);
+console.log(ownersEatTooLittle.join().replace(',', ' and '));
+console.log(dogs);
 
-labelBalance.addEventListener('click', function () {
-  //*the second argument of .from() Array object method functions as a .map() callback function
-  const movementsUI = Array.from(
-    document.querySelectorAll('.movements__value'),
-    curr => curr.textContent.replace('€', '')
-  );
+//Checks whether there's any dog eating the exact recommended amount
+console.log(dogs.some(curr => curr.curFood === curr.recommendedFood));
 
-  console.log(movementsUI);
+//Checks whether there's any dog eating in the recommended range
+console.log(
+  dogs.some(curr => isEatingRight(curr.curFood, curr.recommendedFood))
+);
 
-  //?Variance of the above - with destructuring:
-  const movementsUI2 = [...document.querySelectorAll('.movements__value')].map(
-    curr => curr.textContent.replace('€', '')
-  );
-  console.log(movementsUI2);
-});
+const dogsEatingOkay = dogs.filter(curr =>
+  isEatingRight(curr.curFood, curr.recommendedFood)
+);
+console.log('dogsEatingOkay:', dogsEatingOkay);
+
+const dogsSorted = dogs
+  .slice()
+  .sort((a, b) => (a.recommendedFood > b.recommendedFood ? 1 : -1));
+console.log('dogsSorted:', dogsSorted);
+
+//?Challenge #4 completed!
