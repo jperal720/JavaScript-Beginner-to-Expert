@@ -313,27 +313,65 @@ btnSort.addEventListener('click', function (e) {
 // //!number separators will not work in this case.
 // console.log(Number('230_000'));
 
-console.log(2 ** 53 - 1);
-console.log(2 ** 53 + 2);
-console.log(2 ** 53 + 1);
-console.log(Number.MAX_SAFE_INTEGER);
+// console.log(2 ** 53 - 1);
+// console.log(2 ** 53 + 2);
+// console.log(2 ** 53 + 1);
+// console.log(Number.MAX_SAFE_INTEGER);
 
-console.log(9928059824098240968029486092486n);
+// console.log(9928059824098240968029486092486n);
 
-//*when not using BigInt, precision can be lost during operations
-console.log(200000000000000000000 + 200000000000200000100);
-console.log(200000000000000000000n + 200000000000200000100n);
+// //*when not using BigInt, precision can be lost during operations
+// console.log(200000000000000000000 + 200000000000200000100);
+// console.log(200000000000000000000n + 200000000000200000100n);
 
-const huge = 20928309280928029820298029n;
-const num = 23;
+// const huge = 20928309280928029820298029n;
+// const num = 23;
 
-console.log(huge * BigInt(num));
+// console.log(huge * BigInt(num));
 
-//Logical operators are the exception when performing operations between bigint and number data types
-console.log(20n > 15);
-console.log(20n === 20);
-console.log(typeof 20n);
-console.log(20n == 20);
+// //Logical operators are the exception when performing operations between bigint and number data types
+// console.log(20n > 15);
+// console.log(20n === 20);
+// console.log(typeof 20n);
+// console.log(20n == 20);
 
-//* Math operations cannot be used on bigInt data types
-// console.log(Math.sqrt(15n));
+// //* Math operations cannot be used on bigInt data types
+// // console.log(Math.sqrt(15n));
+
+//Create a date:
+// const now = new Date();
+// console.log(now);
+// //! Months begin at 0
+// console.log(now.getDate(), now.getMonth() + 1, now.getFullYear());
+
+// console.log(new Date('Aug 02 2020 18:04:31')); //*Doing this is quite unreliable, unless the string is created under the JS format
+// console.log(new Date('December 24, 2015')); //*Doing this is quite unreliable, unless the string is created under the JS format
+
+// console.log(new Date(account1.movementsDates[0]));
+
+// console.log(new Date(2037, 10, 19, 14, 23, 5));
+
+// console.log(new Date(2037, 10, 31)); //Javascript autocorrect dates - Nov only has 30 days.
+
+// console.log(new Date(0)); //Date unix was created
+// console.log(new Date(3 * 24 * 60 * 60 * 1000));
+
+//Working with dates
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear(), future.getYear()); //.getYear() method represents years relative to 1900, which is annotated as year 0.
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString()); //This follows an international standard
+//*This will return the timestamp - the amount of milliseconds past 1 Jan 1970.
+const timestamp = future.getTime();
+console.log(timestamp);
+console.log(new Date(timestamp)); //Will return the date of the timestamp
+console.log(Date.now());
+
+//* Date object properties have getters and setters.
+future.setFullYear(2040);
+console.log(future);
