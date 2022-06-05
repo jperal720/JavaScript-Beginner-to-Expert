@@ -297,18 +297,43 @@ btnSort.addEventListener('click', function (e) {
 // });
 
 //287,460,000,000
-const diameter = 287_460_000_000; //'_' numeric separators
-console.log(diameter);
+// const diameter = 287_460_000_000; //'_' numeric separators
+// console.log(diameter);
 
-const priceCents = 345_99;
-console.log(priceCents);
+// const priceCents = 345_99;
+// console.log(priceCents);
 
-const transferFee = 15_00;
-const transferFee2 = 1_500;
+// const transferFee = 15_00;
+// const transferFee2 = 1_500;
 
-//! Note: number separators can only be placed between to numbers
-const PI = 3.141_5;
-console.log(PI);
+// //! Note: number separators can only be placed between to numbers
+// const PI = 3.141_5;
+// console.log(PI);
 
-//!number separators will not work in this case.
-console.log(Number('230_000'));
+// //!number separators will not work in this case.
+// console.log(Number('230_000'));
+
+console.log(2 ** 53 - 1);
+console.log(2 ** 53 + 2);
+console.log(2 ** 53 + 1);
+console.log(Number.MAX_SAFE_INTEGER);
+
+console.log(9928059824098240968029486092486n);
+
+//*when not using BigInt, precision can be lost during operations
+console.log(200000000000000000000 + 200000000000200000100);
+console.log(200000000000000000000n + 200000000000200000100n);
+
+const huge = 20928309280928029820298029n;
+const num = 23;
+
+console.log(huge * BigInt(num));
+
+//Logical operators are the exception when performing operations between bigint and number data types
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n);
+console.log(20n == 20);
+
+//* Math operations cannot be used on bigInt data types
+// console.log(Math.sqrt(15n));
