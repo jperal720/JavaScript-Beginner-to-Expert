@@ -298,3 +298,17 @@ btnSort.addEventListener('click', function (e) {
 
 //287,460,000,000
 const diameter = 287_460_000_000; //'_' numeric separators
+console.log(diameter);
+
+const priceCents = 345_99;
+console.log(priceCents);
+
+const transferFee = 15_00;
+const transferFee2 = 1_500;
+
+//! Note: number separators can only be placed between to numbers
+const PI = 3.141_5;
+console.log(PI);
+
+//!number separators will not work in this case.
+console.log(Number('230_000'));
