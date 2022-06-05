@@ -282,9 +282,19 @@ btnSort.addEventListener('click', function (e) {
 
 // console.log(randomInt(4, 15));
 
-console.log('Math.round(23.9):', Math.round(23.9));
-console.log('Math.round(23.9):', Math.round(23.3));
-console.log(Math.ceil(23.9));
-console.log(Math.floor(23.9));
+// console.log('Math.round(23.9):', Math.round(23.9));
+// console.log('Math.round(23.9):', Math.round(23.3));
+// console.log(Math.ceil(23.9));
+// console.log(Math.floor(23.9));
 
-console.log((2.8).toFixed(0));
+// console.log((2.8).toFixed(0));
+
+// document.querySelector('body').addEventListener('click', () => {
+//   [...document.querySelectorAll('.movements__row')].forEach((curr, i) => {
+//     if (i % 2 == 0) curr.style.backgroundColor = '#d138c6';
+//     else curr.style.backgroundColor = '#559ff2';
+//   });
+// });
+
+//287,460,000,000
+const diameter = 287_460_000_000; //'_' numeric separators
