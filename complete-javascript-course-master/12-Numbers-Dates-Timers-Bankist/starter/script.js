@@ -159,17 +159,11 @@ const updateUI = function (acc) {
 
 const addDate = function (acc) {
   const now = new Date();
-  const day = `${now.getDate()}`.padStart(2, `0`);
-  const month = `${now.getMonth() + 1}`.padStart(2, `0`);
-  const year = now.getFullYear();
-  const hour = now.getHours();
-  const min = now.getMinutes();
-  const sec = now.getSeconds();
-  const mSec = now.getMilliseconds();
-  console.log(`${year}-${month}-${day}T${hour}:${min}:${sec}.${mSec}Z`);
-  acc.movementsDates.push(
-    `${year}-${month}-${day}T${hour}:${min}:${sec}.${mSec}Z`
-  );
+
+  //*using .toISOString() method to push the
+  //*current date into the same format as the
+  //*other dates stored in the account
+  acc.movementsDates.push(now.toISOString());
 
   console.log(acc.movementsDates);
 };
