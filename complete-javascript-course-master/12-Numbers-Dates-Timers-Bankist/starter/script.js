@@ -81,19 +81,25 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // Functions
 
-const displayMovements = function (movements, sort = false) {
+const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
+  const movements = acc.movements;
 
   const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
 
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
+    const displayDate = new Date(acc.movementsDates[i]);
+    const day = `${displayDate.getDate()}`.padStart(2, `0`);
+    const month = `${displayDate.getMonth() + 1}`.padStart(2, `0`);
+    const year = displayDate.getFullYear();
 
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
+        <div class="movements__date">${day}/${month}/${year}</div>
         <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
@@ -142,7 +148,7 @@ createUsernames(accounts);
 
 const updateUI = function (acc) {
   // Display movements
-  displayMovements(acc.movements);
+  displayMovements(acc);
 
   // Display balance
   calcDisplayBalance(acc);
@@ -151,9 +157,41 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+const addDate = function (acc) {
+  const now = new Date();
+  const day = `${now.getDate()}`.padStart(2, `0`);
+  const month = `${now.getMonth() + 1}`.padStart(2, `0`);
+  const year = now.getFullYear();
+  const hour = now.getHours();
+  const min = now.getMinutes();
+  const sec = now.getSeconds();
+  const mSec = now.getMilliseconds();
+  console.log(`${year}-${month}-${day}T${hour}:${min}:${sec}.${mSec}Z`);
+  acc.movementsDates.push(
+    `${year}-${month}-${day}T${hour}:${min}:${sec}.${mSec}Z`
+  );
+
+  console.log(acc.movementsDates);
+};
+
 ///////////////////////////////////////
 // Event handlers
+
+//Fake always logged in
 let currentAccount;
+
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+
+const currentDate = new Date();
+const day = `${currentDate.getDate()}`.padStart(2, `0`);
+const month = `${currentDate.getMonth() + 1}`.padStart(2, `0`);
+const year = currentDate.getFullYear();
+const hour = currentDate.getHours();
+const min = currentDate.getMinutes();
+
+labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
@@ -194,6 +232,9 @@ btnTransfer.addEventListener('click', function (e) {
     currentAccount.balance >= amount &&
     receiverAcc?.username !== currentAccount.username
   ) {
+    // Add Date to new movement
+    addDate(currentAccount);
+
     // Doing the transfer
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
@@ -211,6 +252,9 @@ btnLoan.addEventListener('click', function (e) {
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
     currentAccount.movements.push(amount);
+
+    // Add Date
+    addDate(currentAccount);
 
     // Update UI
     updateUI(currentAccount);
@@ -244,7 +288,7 @@ btnClose.addEventListener('click', function (e) {
 let sorted = false;
 btnSort.addEventListener('click', function (e) {
   e.preventDefault();
-  displayMovements(currentAccount.movements, !sorted);
+  displayMovements(currentAccount, !sorted);
   sorted = !sorted;
 });
 
@@ -357,21 +401,21 @@ btnSort.addEventListener('click', function (e) {
 // console.log(new Date(3 * 24 * 60 * 60 * 1000));
 
 //Working with dates
-const future = new Date(2037, 10, 19, 15, 23);
-console.log(future);
-console.log(future.getFullYear(), future.getYear()); //.getYear() method represents years relative to 1900, which is annotated as year 0.
-console.log(future.getDate());
-console.log(future.getDay());
-console.log(future.getHours());
-console.log(future.getMinutes());
-console.log(future.getSeconds());
-console.log(future.toISOString()); //This follows an international standard
-//*This will return the timestamp - the amount of milliseconds past 1 Jan 1970.
-const timestamp = future.getTime();
-console.log(timestamp);
-console.log(new Date(timestamp)); //Will return the date of the timestamp
-console.log(Date.now());
+// const future = new Date(2037, 10, 19, 15, 23);
+// console.log(future);
+// console.log(future.getFullYear(), future.getYear()); //.getYear() method represents years relative to 1900, which is annotated as year 0.
+// console.log(future.getDate());
+// console.log(future.getDay());
+// console.log(future.getHours());
+// console.log(future.getMinutes());
+// console.log(future.getSeconds());
+// console.log(future.toISOString()); //This follows an international standard
+// //*This will return the timestamp - the amount of milliseconds past 1 Jan 1970.
+// const timestamp = future.getTime();
+// console.log(timestamp);
+// console.log(new Date(timestamp)); //Will return the date of the timestamp
+// console.log(Date.now());
 
-//* Date object properties have getters and setters.
-future.setFullYear(2040);
-console.log(future);
+// //* Date object properties have getters and setters.
+// future.setFullYear(2040);
+// console.log(future);
