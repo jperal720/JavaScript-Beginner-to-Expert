@@ -22,8 +22,8 @@ const account1 = {
     '2020-04-01T10:17:24.185Z',
     '2020-05-08T14:11:59.604Z',
     '2020-05-27T17:01:17.194Z',
-    '2020-07-11T23:36:17.929Z',
-    '2020-07-12T10:51:36.790Z',
+    '2022-06-05T13:32:17.929Z',
+    '2022-06-06T10:51:36.790Z',
   ],
   currency: 'EUR',
   locale: 'pt-PT', // de-DE
@@ -81,25 +81,41 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // Functions
 
+const formatMovementDates = function (date) {
+  const displayDate = date;
+
+  const calcDaysPassed = (date1, date2) =>
+    Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
+  const daysPassed = calcDaysPassed(date, new Date());
+  console.log(daysPassed);
+
+  if (daysPassed == 0) return `Today`;
+  else if (daysPassed == 1) return `Yesterday`;
+  else if (daysPassed > 1 && daysPassed < 7) return `${daysPassed} days ago`;
+
+  const day = `${displayDate.getDate()}`.padStart(2, `0`);
+  const month = `${displayDate.getMonth() + 1}`.padStart(2, `0`);
+  const year = displayDate.getFullYear();
+
+  return `${day}/${month}/${year}`;
+};
+
 const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
   const movements = acc.movements;
-
   const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
 
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
-    const displayDate = new Date(acc.movementsDates[i]);
-    const day = `${displayDate.getDate()}`.padStart(2, `0`);
-    const month = `${displayDate.getMonth() + 1}`.padStart(2, `0`);
-    const year = displayDate.getFullYear();
+
+    const displayDate = formatMovementDates(new Date(acc.movementsDates[i]));
 
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__date">${day}/${month}/${year}</div>
+        <div class="movements__date">${displayDate}</div>
         <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
@@ -413,3 +429,12 @@ btnSort.addEventListener('click', function (e) {
 // //* Date object properties have getters and setters.
 // future.setFullYear(2040);
 // console.log(future);
+
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(+future); //Date in milliseconds - starting from 1 Jan, 1970 - Unix Time.
+
+const daysPassed = (date1, date2) => new Date(Math.abs(date2 - date1));
+
+const present = new Date();
+
+console.log(new Date(daysPassed(present, future)));
