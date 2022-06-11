@@ -203,6 +203,9 @@ const min = currentDate.getMinutes();
 
 labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
 
+//Experimenting with API
+labelDate.textContent = new Intl.DateTimeFormat('en-US').format(now);
+
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -430,11 +433,11 @@ btnSort.addEventListener('click', function (e) {
 // future.setFullYear(2040);
 // console.log(future);
 
-const future = new Date(2037, 10, 19, 15, 23);
-console.log(+future); //Date in milliseconds - starting from 1 Jan, 1970 - Unix Time.
+// const future = new Date(2037, 10, 19, 15, 23);
+// console.log(+future); //Date in milliseconds - starting from 1 Jan, 1970 - Unix Time.
 
-const daysPassed = (date1, date2) => new Date(Math.abs(date2 - date1));
+// const daysPassed = (date1, date2) => new Date(Math.abs(date2 - date1));
 
-const present = new Date();
+// const present = new Date();
 
-console.log(new Date(daysPassed(present, future)));
+// console.log(new Date(daysPassed(present, future)));
