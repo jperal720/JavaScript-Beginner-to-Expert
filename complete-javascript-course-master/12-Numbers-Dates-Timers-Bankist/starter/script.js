@@ -81,23 +81,18 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // Functions
 
-const formatMovementDates = function (date) {
+const formatMovementDates = function (date, locale) {
   const displayDate = date;
 
   const calcDaysPassed = (date1, date2) =>
     Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
   const daysPassed = calcDaysPassed(date, new Date());
-  console.log(daysPassed);
 
   if (daysPassed == 0) return `Today`;
   else if (daysPassed == 1) return `Yesterday`;
   else if (daysPassed > 1 && daysPassed < 7) return `${daysPassed} days ago`;
 
-  const day = `${displayDate.getDate()}`.padStart(2, `0`);
-  const month = `${displayDate.getMonth() + 1}`.padStart(2, `0`);
-  const year = displayDate.getFullYear();
-
-  return `${day}/${month}/${year}`;
+  return new Intl.DateTimeFormat(locale).format(date);
 };
 
 const displayMovements = function (acc, sort = false) {
@@ -108,7 +103,10 @@ const displayMovements = function (acc, sort = false) {
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
-    const displayDate = formatMovementDates(new Date(acc.movementsDates[i]));
+    const displayDate = formatMovementDates(
+      new Date(acc.movementsDates[i]),
+      acc.locale
+    );
 
     const html = `
       <div class="movements__row">
@@ -194,17 +192,19 @@ currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = 100;
 
-const currentDate = new Date();
-const day = `${currentDate.getDate()}`.padStart(2, `0`);
-const month = `${currentDate.getMonth() + 1}`.padStart(2, `0`);
-const year = currentDate.getFullYear();
-const hour = currentDate.getHours();
-const min = currentDate.getMinutes();
-
-labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
-
 //Experimenting with API
-labelDate.textContent = new Intl.DateTimeFormat('en-US').format(now);
+const now = new Date();
+const options = {
+  hour: 'numeric',
+  minute: 'numeric',
+  day: 'numeric',
+  month: 'numeric',
+  year: 'numeric',
+};
+
+const locale = currentAccount.locale;
+
+labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now);
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
