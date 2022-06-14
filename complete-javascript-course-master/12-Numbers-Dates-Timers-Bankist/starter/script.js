@@ -258,15 +258,17 @@ btnTransfer.addEventListener('click', function (e) {
     currentAccount.balance >= amount &&
     receiverAcc?.username !== currentAccount.username
   ) {
-    // Add Date to new movement
-    addDate(currentAccount);
+    setTimeout(() => {
+      // Add Date to new movement
+      addDate(currentAccount);
 
-    // Doing the transfer
-    currentAccount.movements.push(-amount);
-    receiverAcc.movements.push(amount);
+      // Doing the transfer
+      currentAccount.movements.push(-amount);
+      receiverAcc.movements.push(amount);
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+    }, 5000);
   }
 });
 
@@ -276,14 +278,16 @@ btnLoan.addEventListener('click', function (e) {
   const amount = +inputLoanAmount.value;
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // Add movement
-    currentAccount.movements.push(amount);
+    setTimeout(() => {
+      // Add movement
+      currentAccount.movements.push(amount);
 
-    // Add Date
-    addDate(currentAccount);
+      // Add Date
+      addDate(currentAccount);
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+    }, 5000);
   }
   inputLoanAmount.value = '';
 });
