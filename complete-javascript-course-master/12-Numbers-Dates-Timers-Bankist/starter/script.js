@@ -184,6 +184,20 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+const startLogoutTimer = function () {
+  let time = 300;
+  const timer = setInterval(() => {
+    const min = String(Math.trunc(time / 60)).padStart(2, `0`);
+    const sec = time % 60;
+    labelTimer.textContent = `${min}:${sec}`;
+    time -= 1;
+    if (time == 0) {
+      clearInterval(timer);
+      containerApp.style.opacity = 0;
+    }
+  }, 1000);
+};
+
 const addDate = function (acc) {
   const now = new Date();
 
@@ -238,6 +252,9 @@ btnLogin.addEventListener('click', function (e) {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+
+    //Starting Logout timer
+    startLogoutTimer();
 
     // Update UI
     updateUI(currentAccount);
@@ -483,12 +500,12 @@ btnSort.addEventListener('click', function (e) {
 // if (ingredients.includes(`spinach`)) clearTimeout(timer);
 
 //setInterval
-let num = 100;
-const interval = setInterval(function () {
-  const clock = new Date();
-  console.log(
-    `${clock.getHours()}:${clock.getMinutes()}:${clock.getSeconds()}`
-  );
-}, 1000);
+// let num = 100;
+// const interval = setInterval(function () {
+//   const clock = new Date();
+//   console.log(
+//     `${clock.getHours()}:${clock.getMinutes()}:${clock.getSeconds()}`
+//   );
+// }, 1000);
 
-if (num == 93) clearInterval(interval);
+// if (num == 93) clearInterval(interval);
