@@ -182,6 +182,10 @@ const updateUI = function (acc) {
 
   // Display summary
   calcDisplaySummary(acc);
+
+  //Reset timer after updating
+  clearInterval(timer);
+  timer = startLogoutTimer();
 };
 
 const startLogoutTimer = function () {
