@@ -467,3 +467,13 @@ btnSort.addEventListener('click', function (e) {
 // console.log(new Intl.NumberFormat('en-US', option).format(num));
 // console.log(new Intl.NumberFormat('es-SP', option).format(num));
 // console.log(new Intl.NumberFormat(navigator.language, option).format(num));
+const ingredients = [`olives`, `spinach`];
+
+const timer = setTimeout(
+  (ing1, ing2) => console.log(`Here's your pizza:\ning1:${ing1}\ning2:${ing2}`),
+  1000,
+  ...ingredients
+);
+console.log();
+
+if (ingredients.includes(`spinach`)) clearTimeout(timer);
