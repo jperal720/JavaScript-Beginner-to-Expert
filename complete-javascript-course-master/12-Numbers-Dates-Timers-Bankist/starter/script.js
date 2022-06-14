@@ -186,16 +186,20 @@ const updateUI = function (acc) {
 
 const startLogoutTimer = function () {
   let time = 300;
-  const timer = setInterval(() => {
+  const timerFunction = () => {
     const min = String(Math.trunc(time / 60)).padStart(2, `0`);
-    const sec = time % 60;
+    const sec = String(time % 60).padStart(2, `0`);
     labelTimer.textContent = `${min}:${sec}`;
-    time -= 1;
     if (time == 0) {
       clearInterval(timer);
       containerApp.style.opacity = 0;
     }
-  }, 1000);
+    time -= 1;
+  };
+  timerFunction();
+  const timer = setInterval(timerFunction, 1000);
+
+  return timer;
 };
 
 const addDate = function (acc) {
@@ -213,7 +217,7 @@ const addDate = function (acc) {
 // Event handlers
 
 //Fake always logged in
-let currentAccount;
+let currentAccount, timer;
 
 currentAccount = account1;
 updateUI(currentAccount);
@@ -254,7 +258,8 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginPin.blur();
 
     //Starting Logout timer
-    startLogoutTimer();
+    if (timer) clearInterval(timer);
+    timer = startLogoutTimer();
 
     // Update UI
     updateUI(currentAccount);
