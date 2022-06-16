@@ -31,3 +31,19 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+
+console.log(document.body.querySelectorAll('.section'));
+console.log(document.getElementById('section--1'));
+
+//* By using getElementsByTagName(), we get an updated list of elements
+//* of the given parameter in the DOM.
+const allButtons = document.getElementsByTagName('button');
+console.log(allButtons);
+
+console.log(document.getElementsByClassName('btn'));
+
+//Creating and Inserting elements
