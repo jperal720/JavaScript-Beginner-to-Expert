@@ -74,3 +74,49 @@ document.querySelectorAll('.btn--close-cookie').forEach(curr =>
     curr.parentElement.remove();
   })
 );
+
+message.style.backgroundColor = `#37383d`;
+message.style.width = `120%`;
+clone.style.backgroundColor = `#37383d`;
+
+console.log(message.style.width);
+console.log(getComputedStyle(message).height);
+console.log(getComputedStyle(message).color);
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 40 + `px`;
+console.log(getComputedStyle(message).height);
+
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+//Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.designer);
+console.log(logo.className);
+
+//Non-standar
+console.log(logo.getAttribute('designer'));
+logo.setAttribute('designer', 'Jonathan');
+console.log(logo.getAttribute('designer'));
+const urlMichael =
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Michael_Jackson_Dangerous_World_Tour_1993.jpg/385px-Michael_Jackson_Dangerous_World_Tour_1993.jpg';
+logo.setAttribute('src', urlMichael);
+logo.style.height =
+  Number.parseFloat(getComputedStyle(logo).height, 10) + 200 + 'px';
+logo.style.height =
+  Number.parseFloat(getComputedStyle(logo).width, 10) + 400 + 'px';
+
+//Data attributes
+console.log(logo.dataset.versionNumber);
+
+//Classes - how to manipulate them on the DOM.
+//?Don't worry about the details; it is just done to refresh memory
+logo.classList.add('c', 'j');
+logo.classList.remove('d');
+logo.classList.toggle('c');
+logo.classList.contains('d');
+
+//Do not manipulate classes like this //! It will only override the already written ones;
+logo.className = 'jonathan';
