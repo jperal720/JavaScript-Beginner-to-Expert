@@ -146,7 +146,8 @@ const updateUI = function (acc, sorted = false) {
   calcPrintBalance(acc);
 };
 
-// Event Handler
+//** Event Handlers */
+
 let currentAccount;
 
 btnLogin.addEventListener('click', function (event) {

@@ -52,7 +52,7 @@ document.addEventListener('keydown', function (e) {
 const header = document.querySelector('.header');
 //!At this point, when creating an element, the element is not in the DOM
 //!Note: We have to add the element to the DOM, ourselves
-const message = document.createElement('div');
+const message = document.createElement('section');
 message.classList.add('cookie-message');
 message.textContent = `We used cookies for improved functionality and analytics`;
 message.innerHTML = `We used cookies for improved functionality and analytics. 
